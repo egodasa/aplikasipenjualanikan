@@ -55,7 +55,7 @@
     End Sub
 
     Private Sub Bexit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bexit.Click
-        Fmenu.Show()
+        'Fmenu.Show()
         Me.Close()
     End Sub
 End Class

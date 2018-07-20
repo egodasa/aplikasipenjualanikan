@@ -12,7 +12,7 @@ Module helper
     Public main_form As Form
     Public _DIR As String = "F:\Program\visual_basic\skripsitia\WindowsApplication1\"
     Sub setKoneksi()
-        str = "Server=localhost;uid=root;pwd=;database=dblaporan_penjualan;port=3306"
+        str = "Server=localhost;uid=root;pwd=;database=dblaporan_penjualanv2;port=3306"
         kon = New MySqlConnection(str)
         If kon.State = ConnectionState.Closed Then
             Try
@@ -62,4 +62,7 @@ Module helper
         name.ResetText()
         name.Refresh()
     End Sub
+    Function rupiah(ByVal x As Integer)
+        Return Format(x, "Rp,   ##,##0")
+    End Function
 End Module

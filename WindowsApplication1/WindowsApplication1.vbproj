@@ -123,10 +123,10 @@
     <Compile Include="Fsatuan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fobat.Designer.vb">
-      <DependentUpon>Fobat.vb</DependentUpon>
+    <Compile Include="Fproduk.Designer.vb">
+      <DependentUpon>Fproduk.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fobat.vb">
+    <Compile Include="Fproduk.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -154,8 +154,8 @@
     <EmbeddedResource Include="Fsatuan.resx">
       <DependentUpon>Fsatuan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fobat.resx">
-      <DependentUpon>Fobat.vb</DependentUpon>
+    <EmbeddedResource Include="Fproduk.resx">
+      <DependentUpon>Fproduk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Fpemasok.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Fkelola_obat
+Partial Class Fkelola_produk
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,22 +22,16 @@ Partial Class Fkelola_obat
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fkelola_obat))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fkelola_produk))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Thrg_beli = New System.Windows.Forms.NumericUpDown()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Thrg_jual = New System.Windows.Forms.NumericUpDown()
         Me.Tstok = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Csatuan = New System.Windows.Forms.ComboBox()
-        Me.Tnm_obat = New System.Windows.Forms.TextBox()
-        Me.DGobat = New System.Windows.Forms.DataGridView()
+        Me.Tnm_produk = New System.Windows.Forms.TextBox()
+        Me.DGproduk = New System.Windows.Forms.DataGridView()
         Me.Tcari = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Cjns_obat = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Bsave = New System.Windows.Forms.Button()
         Me.Bexit = New System.Windows.Forms.Button()
@@ -46,70 +40,34 @@ Partial Class Fkelola_obat
         Me.Bdelete = New System.Windows.Forms.Button()
         Me.Bedit = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DGobat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
-        Me.GroupBox1.Controls.Add(Me.Thrg_beli)
-        Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.Thrg_jual)
         Me.GroupBox1.Controls.Add(Me.Tstok)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Csatuan)
-        Me.GroupBox1.Controls.Add(Me.Tnm_obat)
-        Me.GroupBox1.Controls.Add(Me.DGobat)
+        Me.GroupBox1.Controls.Add(Me.Tnm_produk)
+        Me.GroupBox1.Controls.Add(Me.DGproduk)
         Me.GroupBox1.Controls.Add(Me.Tcari)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Cjns_obat)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(593, 327)
+        Me.GroupBox1.Size = New System.Drawing.Size(593, 265)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "ENTRI DATA OBAT"
-        '
-        'Thrg_beli
-        '
-        Me.Thrg_beli.Location = New System.Drawing.Point(406, 81)
-        Me.Thrg_beli.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
-        Me.Thrg_beli.Name = "Thrg_beli"
-        Me.Thrg_beli.Size = New System.Drawing.Size(181, 23)
-        Me.Thrg_beli.TabIndex = 21
-        Me.Thrg_beli.ThousandsSeparator = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(329, 81)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(61, 15)
-        Me.Label8.TabIndex = 20
-        Me.Label8.Text = "Harga Beli"
-        '
-        'Thrg_jual
-        '
-        Me.Thrg_jual.Location = New System.Drawing.Point(125, 80)
-        Me.Thrg_jual.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
-        Me.Thrg_jual.Name = "Thrg_jual"
-        Me.Thrg_jual.Size = New System.Drawing.Size(170, 23)
-        Me.Thrg_jual.TabIndex = 19
-        Me.Thrg_jual.ThousandsSeparator = True
+        Me.GroupBox1.Text = "KELOLA DATA PRODUK"
         '
         'Tstok
         '
-        Me.Tstok.Location = New System.Drawing.Point(125, 108)
+        Me.Tstok.Location = New System.Drawing.Point(125, 53)
         Me.Tstok.Maximum = New Decimal(New Integer() {1215752192, 23, 0, 0})
         Me.Tstok.Name = "Tstok"
         Me.Tstok.Size = New System.Drawing.Size(120, 23)
@@ -119,7 +77,7 @@ Partial Class Fkelola_obat
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 137)
+        Me.Label1.Location = New System.Drawing.Point(278, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 15)
         Me.Label1.TabIndex = 15
@@ -129,32 +87,32 @@ Partial Class Fkelola_obat
         '
         Me.Csatuan.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Csatuan.FormattingEnabled = True
-        Me.Csatuan.Location = New System.Drawing.Point(125, 137)
+        Me.Csatuan.Location = New System.Drawing.Point(343, 53)
         Me.Csatuan.Name = "Csatuan"
         Me.Csatuan.Size = New System.Drawing.Size(121, 23)
         Me.Csatuan.TabIndex = 14
         '
-        'Tnm_obat
+        'Tnm_produk
         '
-        Me.Tnm_obat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tnm_obat.Location = New System.Drawing.Point(125, 24)
-        Me.Tnm_obat.Name = "Tnm_obat"
-        Me.Tnm_obat.Size = New System.Drawing.Size(462, 23)
-        Me.Tnm_obat.TabIndex = 13
+        Me.Tnm_produk.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tnm_produk.Location = New System.Drawing.Point(125, 24)
+        Me.Tnm_produk.Name = "Tnm_produk"
+        Me.Tnm_produk.Size = New System.Drawing.Size(462, 23)
+        Me.Tnm_produk.TabIndex = 13
         '
-        'DGobat
+        'DGproduk
         '
-        Me.DGobat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGobat.Location = New System.Drawing.Point(10, 199)
-        Me.DGobat.Name = "DGobat"
-        Me.DGobat.ReadOnly = True
-        Me.DGobat.Size = New System.Drawing.Size(577, 115)
-        Me.DGobat.TabIndex = 12
+        Me.DGproduk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGproduk.Location = New System.Drawing.Point(11, 134)
+        Me.DGproduk.Name = "DGproduk"
+        Me.DGproduk.ReadOnly = True
+        Me.DGproduk.Size = New System.Drawing.Size(577, 115)
+        Me.DGproduk.TabIndex = 12
         '
         'Tcari
         '
         Me.Tcari.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tcari.Location = New System.Drawing.Point(125, 170)
+        Me.Tcari.Location = New System.Drawing.Point(125, 105)
         Me.Tcari.Name = "Tcari"
         Me.Tcari.Size = New System.Drawing.Size(462, 23)
         Me.Tcari.TabIndex = 11
@@ -163,50 +121,21 @@ Partial Class Fkelola_obat
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(8, 170)
+        Me.Label6.Location = New System.Drawing.Point(8, 105)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(88, 15)
+        Me.Label6.Size = New System.Drawing.Size(100, 15)
         Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Pencarian Obat"
-        '
-        'Cjns_obat
-        '
-        Me.Cjns_obat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cjns_obat.FormattingEnabled = True
-        Me.Cjns_obat.Location = New System.Drawing.Point(125, 52)
-        Me.Cjns_obat.Name = "Cjns_obat"
-        Me.Cjns_obat.Size = New System.Drawing.Size(462, 23)
-        Me.Cjns_obat.TabIndex = 7
+        Me.Label6.Text = "Pencarian Produk"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(8, 108)
+        Me.Label5.Location = New System.Drawing.Point(6, 53)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(60, 15)
+        Me.Label5.Size = New System.Drawing.Size(72, 15)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Stok Obat"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(8, 80)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 15)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Harga Jual"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 15)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Jenis Obat"
+        Me.Label5.Text = "Stok Produk"
         '
         'Label2
         '
@@ -214,9 +143,9 @@ Partial Class Fkelola_obat
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(8, 24)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 15)
+        Me.Label2.Size = New System.Drawing.Size(80, 15)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Nama Obat"
+        Me.Label2.Text = "Nama Produk"
         '
         'Bsave
         '
@@ -255,7 +184,7 @@ Partial Class Fkelola_obat
         Me.GroupBox2.Controls.Add(Me.Bedit)
         Me.GroupBox2.Controls.Add(Me.Bsave)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 345)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 283)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(593, 49)
         Me.GroupBox2.TabIndex = 3
@@ -306,47 +235,39 @@ Partial Class Fkelola_obat
         Me.Bedit.Text = "UBAH"
         Me.Bedit.UseVisualStyleBackColor = False
         '
-        'Fkelola_obat
+        'Fkelola_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MintCream
-        Me.ClientSize = New System.Drawing.Size(619, 404)
+        Me.ClientSize = New System.Drawing.Size(619, 347)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Fkelola_obat"
-        Me.Text = "Kelola Obat"
+        Me.Name = "Fkelola_produk"
+        Me.Text = "Kelola Produk"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DGobat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents DGobat As System.Windows.Forms.DataGridView
+    Friend WithEvents DGproduk As System.Windows.Forms.DataGridView
     Friend WithEvents Tcari As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Cjns_obat As System.Windows.Forms.ComboBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Bsave As System.Windows.Forms.Button
     Friend WithEvents Bexit As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Tnm_obat As System.Windows.Forms.TextBox
+    Friend WithEvents Tnm_produk As System.Windows.Forms.TextBox
     Friend WithEvents Bcancel As System.Windows.Forms.Button
     Friend WithEvents Bdelete As System.Windows.Forms.Button
     Friend WithEvents Bedit As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Csatuan As System.Windows.Forms.ComboBox
     Friend WithEvents Tstok As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Thrg_beli As NumericUpDown
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Thrg_jual As NumericUpDown
 End Class
