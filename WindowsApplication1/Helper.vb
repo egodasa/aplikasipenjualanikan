@@ -9,7 +9,7 @@ Module helper
     Public str As String
     Public username As String
     Public jenis_pengguna As String
-    Public main_form As Form = Flogin
+    Public main_form As Form
     Public _DIR As String = "F:\Program\visual_basic\skripsitia\WindowsApplication1\"
     Sub setKoneksi()
         str = "Server=localhost;uid=root;pwd=;database=dblaporan_penjualan;port=3306"
@@ -62,33 +62,4 @@ Module helper
         name.ResetText()
         name.Refresh()
     End Sub
-    Function SqlString(x As String)
-        Return "'" & x & "'"
-    End Function
-    Function SelectSqlQuery(ByVal table As String, ByVal x As List(Of SqlBuilder.Sql))
-        Dim hasil As New List(Of String)
-        For Each y As SqlBuilder.Sql In x
-            hasil.Add(y.Name)
-        Next
-        Return "select " & String.Join(",", hasil) & " from " & table & ";"
-    End Function
-    Function InsertSqlQuery(ByVal table As String, ByVal x As List(Of SqlBuilder.Sql))
-        Dim kolom As New List(Of String)
-        Dim nilai As New List(Of String)
-        For Each y As SqlBuilder.Sql In x
-            kolom.Add("`" + y.Name + "`")
-            nilai.Add(y.Value.ToString())
-        Next
-        Return "insert into " & table & " (" & String.Join(",", kolom) & ") values(" & String.Join(",", nilai) & ");"
-    End Function
-    Function UpdateSqlQuery(ByVal table As String, ByVal x As List(Of SqlBuilder.Sql), ByVal where As String, ByVal where_val As String)
-        Dim hasil As New List(Of String)
-        For Each y As SqlBuilder.Sql In x
-            hasil.Add(y.Name + " = " + y.Value)
-        Next
-        Return "update " & table & " set " & String.Join(",", hasil) & " where " & where & " = " & where_val & ";"
-    End Function
-    Function DeleteSqlQuery(ByVal t As String, ByVal id As String, ByVal id_val As String)
-        Return "delete from " & t & " where " & id & " = " & id_val
-    End Function
 End Module

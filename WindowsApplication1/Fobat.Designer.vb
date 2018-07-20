@@ -24,8 +24,9 @@ Partial Class Fkelola_obat
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fkelola_obat))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Tstok_ubah = New System.Windows.Forms.NumericUpDown()
+        Me.Thrg_beli = New System.Windows.Forms.NumericUpDown()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Thrg_jual = New System.Windows.Forms.NumericUpDown()
         Me.Tstok = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Csatuan = New System.Windows.Forms.ComboBox()
@@ -44,16 +45,12 @@ Partial Class Fkelola_obat
         Me.Bcancel = New System.Windows.Forms.Button()
         Me.Bdelete = New System.Windows.Forms.Button()
         Me.Bedit = New System.Windows.Forms.Button()
-        Me.Thrg_jual = New System.Windows.Forms.NumericUpDown()
-        Me.Thrg_beli = New System.Windows.Forms.NumericUpDown()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.Tstok_ubah, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGobat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -62,8 +59,6 @@ Partial Class Fkelola_obat
         Me.GroupBox1.Controls.Add(Me.Thrg_beli)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Thrg_jual)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.Tstok_ubah)
         Me.GroupBox1.Controls.Add(Me.Tstok)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Csatuan)
@@ -84,25 +79,33 @@ Partial Class Fkelola_obat
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "ENTRI DATA OBAT"
         '
-        'Label7
+        'Thrg_beli
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(308, 109)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(152, 15)
-        Me.Label7.TabIndex = 18
-        Me.Label7.Text = "Tambah/Kurangi Stok Obat"
+        Me.Thrg_beli.Location = New System.Drawing.Point(406, 81)
+        Me.Thrg_beli.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
+        Me.Thrg_beli.Name = "Thrg_beli"
+        Me.Thrg_beli.Size = New System.Drawing.Size(181, 23)
+        Me.Thrg_beli.TabIndex = 21
+        Me.Thrg_beli.ThousandsSeparator = True
         '
-        'Tstok_ubah
+        'Label8
         '
-        Me.Tstok_ubah.Enabled = False
-        Me.Tstok_ubah.Location = New System.Drawing.Point(467, 109)
-        Me.Tstok_ubah.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
-        Me.Tstok_ubah.Minimum = New Decimal(New Integer() {100000000, 0, 0, -2147483648})
-        Me.Tstok_ubah.Name = "Tstok_ubah"
-        Me.Tstok_ubah.Size = New System.Drawing.Size(120, 23)
-        Me.Tstok_ubah.TabIndex = 17
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(329, 81)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(61, 15)
+        Me.Label8.TabIndex = 20
+        Me.Label8.Text = "Harga Beli"
+        '
+        'Thrg_jual
+        '
+        Me.Thrg_jual.Location = New System.Drawing.Point(125, 80)
+        Me.Thrg_jual.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
+        Me.Thrg_jual.Name = "Thrg_jual"
+        Me.Thrg_jual.Size = New System.Drawing.Size(170, 23)
+        Me.Thrg_jual.TabIndex = 19
+        Me.Thrg_jual.ThousandsSeparator = True
         '
         'Tstok
         '
@@ -262,7 +265,6 @@ Partial Class Fkelola_obat
         'Bcancel
         '
         Me.Bcancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Bcancel.Enabled = False
         Me.Bcancel.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.Bcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Bcancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -304,34 +306,6 @@ Partial Class Fkelola_obat
         Me.Bedit.Text = "UBAH"
         Me.Bedit.UseVisualStyleBackColor = False
         '
-        'Thrg_jual
-        '
-        Me.Thrg_jual.Location = New System.Drawing.Point(125, 80)
-        Me.Thrg_jual.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
-        Me.Thrg_jual.Name = "Thrg_jual"
-        Me.Thrg_jual.Size = New System.Drawing.Size(170, 23)
-        Me.Thrg_jual.TabIndex = 19
-        Me.Thrg_jual.ThousandsSeparator = True
-        '
-        'Thrg_beli
-        '
-        Me.Thrg_beli.Location = New System.Drawing.Point(406, 81)
-        Me.Thrg_beli.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
-        Me.Thrg_beli.Name = "Thrg_beli"
-        Me.Thrg_beli.Size = New System.Drawing.Size(181, 23)
-        Me.Thrg_beli.TabIndex = 21
-        Me.Thrg_beli.ThousandsSeparator = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(329, 81)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(61, 15)
-        Me.Label8.TabIndex = 20
-        Me.Label8.Text = "Harga Beli"
-        '
         'Fkelola_obat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -345,12 +319,11 @@ Partial Class Fkelola_obat
         Me.Text = "Kelola Obat"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.Tstok_ubah, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGobat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
-        CType(Me.Thrg_jual, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Thrg_beli, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -372,8 +345,6 @@ Partial Class Fkelola_obat
     Friend WithEvents Bedit As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Csatuan As System.Windows.Forms.ComboBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Tstok_ubah As System.Windows.Forms.NumericUpDown
     Friend WithEvents Tstok As System.Windows.Forms.NumericUpDown
     Friend WithEvents Thrg_beli As NumericUpDown
     Friend WithEvents Label8 As Label

@@ -1,105 +1,89 @@
 ﻿Public Class Fkelola_obat
-    Dim getData As String = "select * from daftar_obat"
-    Sub resetForm()
+    Dim produk As New SqlHelper.DataQuery
+    Private Sub SetFormData()
+        produk.formData = New List(Of SqlHelper.Query) From {
+            New SqlHelper.Query("id_obat", "DEFAULT", "Id_Obat"),
+            New SqlHelper.Query("nm_obat", SqlHelper.Query.SqlString(Tnm_obat.Text), "Nama_Obat"),
+            New SqlHelper.Query("stok", Tstok.Value.ToString(), "Stok"),
+            New SqlHelper.Query(Nothing, Nothing, "Jenis_Obat", False),
+            New SqlHelper.Query("id_sat_obat", Csatuan.SelectedValue.ToString, "Id_Sat_Obat"),
+            New SqlHelper.Query(Nothing, Nothing, "Satuan", False),
+            New SqlHelper.Query("hrg_obat", SqlHelper.Query.SqlString(Thrg_jual.Text), "Harga_Obat"),
+            New SqlHelper.Query("hrg_beli", SqlHelper.Query.SqlString(Thrg_beli.Text), "Harga_Beli")
+            }
+    End Sub
+    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Call setKoneksi()
+        produk.table = "tbl_obat"
+        produk.view = "daftar_obat"
+        produk.primary_key = "id_obat"
+        produk.primary_key_caption = "Id_Obat"
+        DGobat.DataSource = fetchData(produk.SelectAll())
+        DGobat.Columns("Id_Obat").Visible = False
+        DGobat.Columns("Id_Sat_Obat").Visible = False
+        DGobat.Columns(produk.primary_key_caption).Visible = False
+        Call fetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
+        Csatuan.SelectedIndex = 1
+        SetFormData()
+        Bcancel.PerformClick()
+    End Sub
+
+    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
+        Bedit.Enabled = False
+        Bdelete.Enabled = False
+        Bsave.Enabled = True
         Tnm_obat.Focus()
         Tnm_obat.Clear()
         Tstok.ResetText()
         Tstok.Enabled = True
-        Tstok_ubah.Minimum = 1000000000
-        Tstok_ubah.ResetText()
-        Cjns_obat.SelectedIndex = -1
         Thrg_jual.ResetText()
         Thrg_beli.ResetText()
         Csatuan.SelectedIndex = -1
-        DGobat.DataSource = fetchData(getData)
-        Call fetchComboboxData("select * from tbl_jenis_obat", Cjns_obat, "nm_jobat", "id_jobat")
-        Call fetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
-        DGobat.Columns("Id_Obat").Visible = False
-        DGobat.Columns("Id_Sat_Obat").Visible = False
-        DGobat.Columns("Id_Jobat").Visible = False
     End Sub
-    Private Sub Fkelola_obat_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Call setKoneksi()
-        Call resetForm()
-    End Sub
-
-    Private Sub Bexit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bexit.Click
+    Private Sub CloseForm(sender As Object, e As EventArgs) Handles Bexit.Click
         If MessageBox.Show("Apakah Anda yakin ingin KELUAR?", "Peringatan!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Fmenu.Show()
+            main_form.Show()
             Me.Close()
         End If
     End Sub
-
-    Private Sub Bsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bsave.Click
-        runQuery("insert into tbl_obat (nm_obat, stok, id_jobat, hrg_obat, hrg_beli, id_sat_obat) values ('" & Tnm_obat.Text & "', " & Tstok.Value & ", " & Cjns_obat.SelectedValue & ", " & Thrg_jual.Value & "," & Thrg_beli.Value & "," & Csatuan.SelectedValue & ")")
+    Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
+        SetFormData()
+        runQuery(produk.Insert())
         Call successMessage()
-        DGobat.DataSource = fetchData(getData)
-        Call resetForm()
+        DGobat.DataSource = fetchData(produk.SelectAll())
+        Bcancel.PerformClick()
     End Sub
-
-    Private Sub DGobat_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGobat.CellDoubleClick
-        Tstok_ubah.Maximum = 1000000
-        Tstok_ubah.Minimum = -1000000
-        Tstok_ubah.Value = 0
+    Private Sub GetDetail(sender As Object, e As DataGridViewCellEventArgs) Handles DGobat.CellContentDoubleClick
+        Bedit.Enabled = True
+        Bdelete.Enabled = True
+        Bsave.Enabled = False
         Tnm_obat.Text = DGobat.CurrentRow.Cells("Nama_Obat").Value
-        Cjns_obat.Text = DGobat.CurrentRow.Cells("Jenis_Obat").Value
         Tstok.Value = DGobat.CurrentRow.Cells("Stok").Value
         Thrg_jual.Text = DGobat.CurrentRow.Cells("Harga_Obat").Value
         Thrg_beli.Text = DGobat.CurrentRow.Cells("Harga_Beli").Value
         Csatuan.Text = DGobat.CurrentRow.Cells("Satuan").Value
-        Tstok_ubah.Minimum = Tstok.Value * -1
-        Tstok.Enabled = False
-        Bedit.Enabled = True
-        Bcancel.Enabled = True
-        Bdelete.Enabled = True
-        Bsave.Enabled = False
     End Sub
-
-    Private Sub Bcancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
-        Bedit.Enabled = False
-        Bcancel.Enabled = False
-        Bdelete.Enabled = False
-        Bsave.Enabled = True
-        Call resetForm()
-    End Sub
-
-    Private Sub Bdelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bdelete.Click
+    Private Sub DeleteData(sender As Object, e As EventArgs) Handles Bdelete.Click
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
-            runQuery(DeleteSqlQuery("tbl_obat", "id_obat", DGobat.CurrentRow.Cells("Id_Obat").Value))
-            DGobat.DataSource = fetchData(getData)
+            runQuery(produk.Delete(DGobat.CurrentRow.Cells(0).Value))
+            DGobat.DataSource = fetchData(produk.SelectAll())
             Bcancel.PerformClick()
         End If
     End Sub
-
-    Private Sub Bedit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bedit.Click
-        runQuery("update tbl_obat set nm_obat = '" & Tnm_obat.Text &
-                 "', id_jobat = " & Cjns_obat.SelectedValue &
-                 ", hrg_obat = " & Thrg_jual.Value &
-                 ", hrg_beli = " & Thrg_beli.Value &
-                 ", stok = " & Val(Tstok.Value + Tstok_ubah.Value) &
-                 ", id_sat_obat = " & Csatuan.SelectedValue &
-                 " where id_obat = " & DGobat.CurrentRow.Cells("Id_Obat").Value)
+    Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
+        SetFormData()
+        runQuery(produk.Update(DGobat.CurrentRow.Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGobat.DataSource = fetchData(getData)
+        DGobat.DataSource = fetchData(produk.SelectAll())
     End Sub
 
-    Private Sub Tcari_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
+    Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
         If Tcari.Text.Length <> 0 Then
             DGobat.DataSource = fetchData("select * from daftar_obat where `Nama_Obat` like '%" & Tcari.Text & "%'")
         Else
-            DGobat.DataSource = fetchData(getData)
+            DGobat.DataSource = fetchData(produk.SelectAll())
         End If
     End Sub
 
-    Private Sub Tstok_EnabledChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tstok.EnabledChanged
-        If Tstok.Enabled = False Then
-            Tstok_ubah.Enabled = True
-        Else : Tstok_ubah.Enabled = False
-        End If
-    End Sub
-
-    Private Sub DGobat_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGobat.CellContentClick
-
-    End Sub
 End Class

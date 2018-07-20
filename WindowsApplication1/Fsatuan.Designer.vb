@@ -24,12 +24,12 @@ Partial Class Fsatuan
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fsatuan))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Bexit = New System.Windows.Forms.Button()
+        Me.Bcancel = New System.Windows.Forms.Button()
         Me.DGsatuan = New System.Windows.Forms.DataGridView()
+        Me.Bdelete = New System.Windows.Forms.Button()
         Me.Tnm_satuan = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Bcancel = New System.Windows.Forms.Button()
-        Me.Bdelete = New System.Windows.Forms.Button()
-        Me.Bexit = New System.Windows.Forms.Button()
         Me.Bedit = New System.Windows.Forms.Button()
         Me.Bsave = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -55,13 +55,57 @@ Partial Class Fsatuan
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "KELOLA DATA SATUAN PRODUK"
         '
+        'Bexit
+        '
+        Me.Bexit.BackColor = System.Drawing.Color.Gray
+        Me.Bexit.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.Bexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Bexit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Bexit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Bexit.Location = New System.Drawing.Point(381, 191)
+        Me.Bexit.Name = "Bexit"
+        Me.Bexit.Size = New System.Drawing.Size(75, 23)
+        Me.Bexit.TabIndex = 2
+        Me.Bexit.Text = "KELUAR"
+        Me.Bexit.UseVisualStyleBackColor = False
+        '
+        'Bcancel
+        '
+        Me.Bcancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Bcancel.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.Bcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Bcancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Bcancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Bcancel.Location = New System.Drawing.Point(381, 151)
+        Me.Bcancel.Name = "Bcancel"
+        Me.Bcancel.Size = New System.Drawing.Size(75, 23)
+        Me.Bcancel.TabIndex = 5
+        Me.Bcancel.Text = "BATAL"
+        Me.Bcancel.UseVisualStyleBackColor = False
+        '
         'DGsatuan
         '
         Me.DGsatuan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGsatuan.Location = New System.Drawing.Point(6, 64)
         Me.DGsatuan.Name = "DGsatuan"
+        Me.DGsatuan.ReadOnly = True
         Me.DGsatuan.Size = New System.Drawing.Size(369, 150)
         Me.DGsatuan.TabIndex = 12
+        '
+        'Bdelete
+        '
+        Me.Bdelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Bdelete.Enabled = False
+        Me.Bdelete.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.Bdelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Bdelete.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Bdelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Bdelete.Location = New System.Drawing.Point(381, 122)
+        Me.Bdelete.Name = "Bdelete"
+        Me.Bdelete.Size = New System.Drawing.Size(75, 23)
+        Me.Bdelete.TabIndex = 4
+        Me.Bdelete.Text = "HAPUS"
+        Me.Bdelete.UseVisualStyleBackColor = False
         '
         'Tnm_satuan
         '
@@ -80,50 +124,6 @@ Partial Class Fsatuan
         Me.Label2.Size = New System.Drawing.Size(79, 15)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Nama Satuan"
-        '
-        'Bcancel
-        '
-        Me.Bcancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Bcancel.Enabled = False
-        Me.Bcancel.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Bcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Bcancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bcancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bcancel.Location = New System.Drawing.Point(381, 151)
-        Me.Bcancel.Name = "Bcancel"
-        Me.Bcancel.Size = New System.Drawing.Size(75, 23)
-        Me.Bcancel.TabIndex = 5
-        Me.Bcancel.Text = "BATAL"
-        Me.Bcancel.UseVisualStyleBackColor = False
-        '
-        'Bdelete
-        '
-        Me.Bdelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Bdelete.Enabled = False
-        Me.Bdelete.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Bdelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Bdelete.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bdelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bdelete.Location = New System.Drawing.Point(381, 122)
-        Me.Bdelete.Name = "Bdelete"
-        Me.Bdelete.Size = New System.Drawing.Size(75, 23)
-        Me.Bdelete.TabIndex = 4
-        Me.Bdelete.Text = "HAPUS"
-        Me.Bdelete.UseVisualStyleBackColor = False
-        '
-        'Bexit
-        '
-        Me.Bexit.BackColor = System.Drawing.Color.Gray
-        Me.Bexit.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Bexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Bexit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bexit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bexit.Location = New System.Drawing.Point(381, 191)
-        Me.Bexit.Name = "Bexit"
-        Me.Bexit.Size = New System.Drawing.Size(75, 23)
-        Me.Bexit.TabIndex = 2
-        Me.Bexit.Text = "KELUAR"
-        Me.Bexit.UseVisualStyleBackColor = False
         '
         'Bedit
         '
