@@ -47,7 +47,6 @@ Module helper
         Catch ex As Exception
             MsgBox("Terdapat kesalahan pada eksekusi SQL." & vbCrLf & "Pesan error : " & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Kesalahan")
         End Try
-
     End Sub
     Sub successMessage()
         MessageBox.Show("Data berhasil disimpan", "Pesan", MessageBoxButtons.OK, MessageBoxIcon.Information)
