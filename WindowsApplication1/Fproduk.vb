@@ -20,7 +20,6 @@
         DGproduk.Columns("Id_Produk").Visible = False
         DGproduk.Columns("Id_Sat_Produk").Visible = False
         DGproduk.Columns(produk.primary_key_caption).Visible = False
-        Csatuan.SelectedIndex = 1
         SetFormData()
         Bcancel.PerformClick()
     End Sub

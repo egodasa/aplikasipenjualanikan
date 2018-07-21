@@ -87,6 +87,7 @@ Partial Class Fkelola_produk
         '
         Me.Csatuan.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Csatuan.FormattingEnabled = True
+        Me.Csatuan.Items.AddRange(New Object() {"q"})
         Me.Csatuan.Location = New System.Drawing.Point(343, 53)
         Me.Csatuan.Name = "Csatuan"
         Me.Csatuan.Size = New System.Drawing.Size(121, 23)

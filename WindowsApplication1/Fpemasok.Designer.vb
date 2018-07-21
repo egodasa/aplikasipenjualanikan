@@ -29,15 +29,15 @@ Partial Class Fpemasok
         Me.Bedit = New System.Windows.Forms.Button()
         Me.Bsave = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Talamat = New System.Windows.Forms.TextBox()
+        Me.Ttelp = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Tnm_pemasok = New System.Windows.Forms.TextBox()
         Me.DGproduk = New System.Windows.Forms.DataGridView()
         Me.Tcari = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Ttelp = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Talamat = New System.Windows.Forms.TextBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,6 +151,33 @@ Partial Class Fpemasok
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "KELOLA DATA PEMASOK"
         '
+        'Talamat
+        '
+        Me.Talamat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Talamat.Location = New System.Drawing.Point(125, 53)
+        Me.Talamat.Multiline = True
+        Me.Talamat.Name = "Talamat"
+        Me.Talamat.Size = New System.Drawing.Size(457, 46)
+        Me.Talamat.TabIndex = 18
+        '
+        'Ttelp
+        '
+        Me.Ttelp.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Ttelp.Location = New System.Drawing.Point(437, 24)
+        Me.Ttelp.Name = "Ttelp"
+        Me.Ttelp.Size = New System.Drawing.Size(145, 23)
+        Me.Ttelp.TabIndex = 17
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(383, 24)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(48, 15)
+        Me.Label3.TabIndex = 16
+        Me.Label3.Text = "No Telp"
+        '
         'Tnm_pemasok
         '
         Me.Tnm_pemasok.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -206,33 +233,6 @@ Partial Class Fpemasok
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Nama Pemasok"
         '
-        'Ttelp
-        '
-        Me.Ttelp.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Ttelp.Location = New System.Drawing.Point(437, 24)
-        Me.Ttelp.Name = "Ttelp"
-        Me.Ttelp.Size = New System.Drawing.Size(145, 23)
-        Me.Ttelp.TabIndex = 17
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(383, 24)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 15)
-        Me.Label3.TabIndex = 16
-        Me.Label3.Text = "No Telp"
-        '
-        'Talamat
-        '
-        Me.Talamat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Talamat.Location = New System.Drawing.Point(125, 53)
-        Me.Talamat.Multiline = True
-        Me.Talamat.Name = "Talamat"
-        Me.Talamat.Size = New System.Drawing.Size(457, 46)
-        Me.Talamat.TabIndex = 18
-        '
         'Fpemasok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -241,7 +241,7 @@ Partial Class Fpemasok
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Fpemasok"
-        Me.Text = "Fpemasok"
+        Me.Text = "Kelola Data Pemasok"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

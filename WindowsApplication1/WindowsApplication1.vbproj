@@ -122,6 +122,12 @@
     <Compile Include="Fpemasok.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fpembelian_produk.Designer.vb">
+      <DependentUpon>Fpembelian_produk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fpembelian_produk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Helper.vb" />
     <Compile Include="Fsatuan.Designer.vb">
       <DependentUpon>Fsatuan.vb</DependentUpon>
@@ -155,6 +161,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Fpemasok.resx">
       <DependentUpon>Fpemasok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fpembelian_produk.resx">
+      <DependentUpon>Fpembelian_produk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fsatuan.resx">
       <DependentUpon>Fsatuan.vb</DependentUpon>
