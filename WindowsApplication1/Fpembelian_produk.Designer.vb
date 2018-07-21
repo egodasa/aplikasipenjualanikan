@@ -41,12 +41,15 @@ Partial Class Fpembelian_produk
         Me.DGproduk = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.DaftarPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Ttotal_bayar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tbayar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tjumlah, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -56,7 +59,7 @@ Partial Class Fpembelian_produk
         Me.GroupBox2.Controls.Add(Me.Bexit)
         Me.GroupBox2.Controls.Add(Me.Bsave)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 266)
+        Me.GroupBox2.Location = New System.Drawing.Point(4, 300)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(593, 49)
         Me.GroupBox2.TabIndex = 6
@@ -137,7 +140,7 @@ Partial Class Fpembelian_produk
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(4, 46)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(593, 248)
         Me.GroupBox1.TabIndex = 7
@@ -151,6 +154,7 @@ Partial Class Fpembelian_produk
         Me.Ttotal_bayar.Name = "Ttotal_bayar"
         Me.Ttotal_bayar.Size = New System.Drawing.Size(286, 23)
         Me.Ttotal_bayar.TabIndex = 24
+        Me.Ttotal_bayar.ThousandsSeparator = True
         '
         'Label6
         '
@@ -276,13 +280,30 @@ Partial Class Fpembelian_produk
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Nama Pemasok"
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(603, 24)
+        Me.MenuStrip1.TabIndex = 8
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'DaftarPembelianToolStripMenuItem
+        '
+        Me.DaftarPembelianToolStripMenuItem.Name = "DaftarPembelianToolStripMenuItem"
+        Me.DaftarPembelianToolStripMenuItem.Size = New System.Drawing.Size(110, 20)
+        Me.DaftarPembelianToolStripMenuItem.Text = "Daftar Pembelian"
+        '
         'Fpembelian_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(609, 327)
+        Me.ClientSize = New System.Drawing.Size(603, 358)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Fpembelian_produk"
         Me.Text = "Pembelian Produk"
         Me.GroupBox2.ResumeLayout(False)
@@ -292,7 +313,10 @@ Partial Class Fpembelian_produk
         CType(Me.Tbayar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tjumlah, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -315,4 +339,6 @@ Partial Class Fpembelian_produk
     Friend WithEvents Cpemasok As ComboBox
     Friend WithEvents Ttotal_bayar As NumericUpDown
     Friend WithEvents Label6 As Label
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents DaftarPembelianToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -35,7 +35,7 @@
     End Sub
     Private Sub SetTransactionValue()
         id_pembelian = DateTime.Now.ToString("ddMMyyhhmmssffff")
-        tgl_pembelian = DateTime.Now.ToString("MM-yy-dd")
+        tgl_pembelian = DateTime.Now.ToString("yyyy-MM-dd")
         GroupBox1.Text = "Form Pembelian Produk (No Faktur :  " & id_pembelian & ")"
     End Sub
 
@@ -87,5 +87,9 @@
         Bcancel.PerformClick()
         main_form.Show()
         Me.Close()
+    End Sub
+
+    Private Sub DaftarPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DaftarPembelianToolStripMenuItem.Click
+        Fdaftar_pembelian.ShowDialog()
     End Sub
 End Class

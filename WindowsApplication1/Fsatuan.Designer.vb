@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Fsatuan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,24 @@ Partial Class Fsatuan
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fsatuan))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Bexit = New System.Windows.Forms.Button()
         Me.Bcancel = New System.Windows.Forms.Button()
         Me.DGsatuan = New System.Windows.Forms.DataGridView()
-        Me.Bdelete = New System.Windows.Forms.Button()
         Me.Tnm_satuan = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Bedit = New System.Windows.Forms.Button()
         Me.Bsave = New System.Windows.Forms.Button()
+        Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.Medit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGsatuan, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuAksi.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -42,7 +46,6 @@ Partial Class Fsatuan
         Me.GroupBox1.Controls.Add(Me.Bexit)
         Me.GroupBox1.Controls.Add(Me.Bcancel)
         Me.GroupBox1.Controls.Add(Me.DGsatuan)
-        Me.GroupBox1.Controls.Add(Me.Bdelete)
         Me.GroupBox1.Controls.Add(Me.Tnm_satuan)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Bedit)
@@ -76,7 +79,7 @@ Partial Class Fsatuan
         Me.Bcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Bcancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Bcancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bcancel.Location = New System.Drawing.Point(381, 151)
+        Me.Bcancel.Location = New System.Drawing.Point(381, 131)
         Me.Bcancel.Name = "Bcancel"
         Me.Bcancel.Size = New System.Drawing.Size(75, 23)
         Me.Bcancel.TabIndex = 5
@@ -91,21 +94,6 @@ Partial Class Fsatuan
         Me.DGsatuan.ReadOnly = True
         Me.DGsatuan.Size = New System.Drawing.Size(369, 150)
         Me.DGsatuan.TabIndex = 12
-        '
-        'Bdelete
-        '
-        Me.Bdelete.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Bdelete.Enabled = False
-        Me.Bdelete.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Bdelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Bdelete.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bdelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bdelete.Location = New System.Drawing.Point(381, 122)
-        Me.Bdelete.Name = "Bdelete"
-        Me.Bdelete.Size = New System.Drawing.Size(75, 23)
-        Me.Bdelete.TabIndex = 4
-        Me.Bdelete.Text = "HAPUS"
-        Me.Bdelete.UseVisualStyleBackColor = False
         '
         'Tnm_satuan
         '
@@ -154,6 +142,26 @@ Partial Class Fsatuan
         Me.Bsave.Text = "SIMPAN"
         Me.Bsave.UseVisualStyleBackColor = False
         '
+        'MenuAksi
+        '
+        Me.MenuAksi.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Medit, Me.Mhapus})
+        Me.MenuAksi.Name = "MenuAksi"
+        Me.MenuAksi.Size = New System.Drawing.Size(109, 48)
+        '
+        'Medit
+        '
+        Me.Medit.Image = CType(resources.GetObject("Medit.Image"), System.Drawing.Image)
+        Me.Medit.Name = "Medit"
+        Me.Medit.Size = New System.Drawing.Size(108, 22)
+        Me.Medit.Text = "Edit"
+        '
+        'Mhapus
+        '
+        Me.Mhapus.Image = CType(resources.GetObject("Mhapus.Image"), System.Drawing.Image)
+        Me.Mhapus.Name = "Mhapus"
+        Me.Mhapus.Size = New System.Drawing.Size(108, 22)
+        Me.Mhapus.Text = "Hapus"
+        '
         'Fsatuan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -167,6 +175,7 @@ Partial Class Fsatuan
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DGsatuan, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuAksi.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -175,8 +184,10 @@ Partial Class Fsatuan
     Friend WithEvents Tnm_satuan As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Bcancel As System.Windows.Forms.Button
-    Friend WithEvents Bdelete As System.Windows.Forms.Button
     Friend WithEvents Bedit As System.Windows.Forms.Button
     Friend WithEvents Bexit As System.Windows.Forms.Button
     Friend WithEvents Bsave As System.Windows.Forms.Button
+    Friend WithEvents MenuAksi As ContextMenuStrip
+    Friend WithEvents Medit As ToolStripMenuItem
+    Friend WithEvents Mhapus As ToolStripMenuItem
 End Class

@@ -1,5 +1,6 @@
 ﻿Public Class Fkelola_produk
     Dim produk As New SqlHelper.DataQuery
+    Dim current_id As Integer
     Private Sub SetFormData()
         produk.formData = New List(Of SqlHelper.Query) From {
             New SqlHelper.Query("id_produk", "DEFAULT", "Id_Produk"),
@@ -47,17 +48,17 @@
         DGproduk.DataSource = fetchData(produk.SelectAll())
         Bcancel.PerformClick()
     End Sub
-    Private Sub GetDetail(sender As Object, e As DataGridViewCellEventArgs) Handles DGproduk.CellContentDoubleClick
+    Private Sub GetDetail(ByVal x As Integer)
         Bedit.Enabled = True
         Bdelete.Enabled = True
         Bsave.Enabled = False
-        Tnm_produk.Text = DGproduk.CurrentRow.Cells("Nama_Produk").Value
-        Tstok.Value = DGproduk.CurrentRow.Cells("Stok").Value
-        Csatuan.Text = DGproduk.CurrentRow.Cells("Satuan").Value
+        Tnm_produk.Text = DGproduk.Rows(x).Cells("Nama_Produk").Value
+        Tstok.Value = DGproduk.Rows(x).Cells("Stok").Value
+        Csatuan.Text = DGproduk.Rows(x).Cells("Satuan").Value
     End Sub
-    Private Sub DeleteData(sender As Object, e As EventArgs) Handles Bdelete.Click
+    Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
-            runQuery(produk.Delete(DGproduk.CurrentRow.Cells(0).Value))
+            runQuery(produk.Delete(DGproduk.Rows(x).Cells(0).Value))
             DGproduk.DataSource = fetchData(produk.SelectAll())
             Bcancel.PerformClick()
         End If
@@ -78,4 +79,20 @@
         End If
     End Sub
 
+    Private Sub DGsatuan_MouseClick(sender As Object, e As MouseEventArgs) Handles DGproduk.MouseClick
+        If e.Button = MouseButtons.Right Then
+            Dim pos = DGproduk.HitTest(e.X, e.Y).RowIndex
+            If pos >= 0 Then
+                MenuAksi.Show(DGproduk, New Point(e.X, e.Y))
+                current_id = pos
+            End If
+        End If
+    End Sub
+
+    Private Sub Medit_Click(sender As Object, e As EventArgs) Handles Medit.Click
+        GetDetail(current_id)
+    End Sub
+    Private Sub Mhapus_Click(sender As Object, e As EventArgs) Handles Mhapus.Click
+        DeleteData(current_id)
+    End Sub
 End Class

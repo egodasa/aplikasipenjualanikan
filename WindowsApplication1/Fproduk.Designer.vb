@@ -22,6 +22,7 @@ Partial Class Fkelola_produk
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fkelola_produk))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Tstok = New System.Windows.Forms.NumericUpDown()
@@ -39,10 +40,14 @@ Partial Class Fkelola_produk
         Me.Bcancel = New System.Windows.Forms.Button()
         Me.Bdelete = New System.Windows.Forms.Button()
         Me.Bedit = New System.Windows.Forms.Button()
+        Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.Medit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.MenuAksi.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -236,6 +241,26 @@ Partial Class Fkelola_produk
         Me.Bedit.Text = "UBAH"
         Me.Bedit.UseVisualStyleBackColor = False
         '
+        'MenuAksi
+        '
+        Me.MenuAksi.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Medit, Me.Mhapus})
+        Me.MenuAksi.Name = "MenuAksi"
+        Me.MenuAksi.Size = New System.Drawing.Size(109, 48)
+        '
+        'Medit
+        '
+        Me.Medit.Image = CType(resources.GetObject("Medit.Image"), System.Drawing.Image)
+        Me.Medit.Name = "Medit"
+        Me.Medit.Size = New System.Drawing.Size(108, 22)
+        Me.Medit.Text = "Edit"
+        '
+        'Mhapus
+        '
+        Me.Mhapus.Image = CType(resources.GetObject("Mhapus.Image"), System.Drawing.Image)
+        Me.Mhapus.Name = "Mhapus"
+        Me.Mhapus.Size = New System.Drawing.Size(108, 22)
+        Me.Mhapus.Text = "Hapus"
+        '
         'Fkelola_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -252,6 +277,7 @@ Partial Class Fkelola_produk
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.MenuAksi.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -271,4 +297,7 @@ Partial Class Fkelola_produk
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Csatuan As System.Windows.Forms.ComboBox
     Friend WithEvents Tstok As System.Windows.Forms.NumericUpDown
+    Friend WithEvents MenuAksi As ContextMenuStrip
+    Friend WithEvents Medit As ToolStripMenuItem
+    Friend WithEvents Mhapus As ToolStripMenuItem
 End Class
