@@ -13,17 +13,26 @@
         Public Shared Function SqlString(x As String)
             Return "'" & x & "'"
         End Function
-        Public Shared Function SelectAllSqlQuery(ByVal table As String)
-            Return "select * from " & table
+        Public Shared Function SelectAll(ByVal table As String, Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
+            If where <> Nothing Then
+                Return "select * from " & table & " where " & String.Join(" ", where, op, where_val)
+            Else
+                Return "select * from " & table
+            End If
         End Function
-        Public Shared Function SelectSqlQuery(ByVal table As String, ByVal x As List(Of Query))
+        Public Shared Function SelectMultiple(ByVal table As String, ByVal x As List(Of Query), Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
             Dim hasil As New List(Of String)
             For Each y As Query In x
                 hasil.Add(y.Name + " AS `" + y.Caption + "`")
             Next
-            Return "select " & String.Join(",", hasil) & " from " & table & ";"
+            If where <> Nothing Then
+                Return "select " & String.Join(",", hasil) & " from " & table & "where " & String.Join(" ", where, op, where_val)
+            Else
+                Return "select " & String.Join(",", hasil) & " from " & table & ";"
+            End If
+
         End Function
-        Public Shared Function InsertSqlQuery(ByVal table As String, ByVal x As List(Of Query))
+        Public Shared Function Insert(ByVal table As String, ByVal x As List(Of Query))
             Dim kolom As New List(Of String)
             Dim nilai As New List(Of String)
             For Each y As Query In x
@@ -34,7 +43,7 @@
             Next
             Return "insert into " & table & " (" & String.Join(",", kolom) & ") values(" & String.Join(",", nilai) & ");"
         End Function
-        Public Shared Function UpdateSqlQuery(ByVal table As String, ByVal x As List(Of Query), ByVal where As String, ByVal where_val As String)
+        Public Shared Function Update(ByVal table As String, ByVal x As List(Of Query), ByVal where As String, ByVal where_val As String)
             Dim hasil As New List(Of String)
             For Each y As Query In x
                 If y.Insertable = True Then
@@ -43,7 +52,7 @@
             Next
             Return "update " & table & " set " & String.Join(",", hasil) & " where " & where & " = " & where_val & ";"
         End Function
-        Public Shared Function DeleteSqlQuery(ByVal t As String, ByVal id As String, ByVal id_val As String)
+        Public Shared Function Delete(ByVal t As String, ByVal id As String, ByVal id_val As String)
             Return "delete from " & t & " where " & id & " = " & id_val
         End Function
     End Class
@@ -53,28 +62,38 @@
         Public primary_key As String
         Public primary_key_caption As String
         Public formData As New List(Of Query)
-        Public Function SelectAll()
-            If Me.view = Nothing Then
-                Return Query.SelectAllSqlQuery(Me.table)
-            Else
-                Return Query.SelectAllSqlQuery(Me.view)
+        Public Function SelectAll(Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
+            Dim tabel = Me.table
+            If Me.view <> Nothing Then
+                tabel = Me.view
             End If
+            If where <> Nothing Then
+                Return Query.SelectAll(tabel, where, op, where_val)
+            Else
+                Return Query.SelectAll(tabel)
+            End If
+
         End Function
-        Public Function SelectMultiple()
-            If Me.view = Nothing Then
-                Return Query.SelectSqlQuery(Me.table, Me.formData)
-            Else
-                Return Query.SelectSqlQuery(Me.view, Me.formData)
+        Public Function SelectMultiple(Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
+            Dim tabel = Me.table
+            If Me.view <> Nothing Then
+                tabel = Me.view
             End If
+            If where <> Nothing Then
+                Return Query.SelectMultiple(tabel, Me.formData, where, op, where_val)
+            Else
+                Return Query.SelectMultiple(tabel, Me.formData)
+            End If
+
         End Function
         Public Function Insert()
-            Return Query.InsertSqlQuery(Me.table, Me.formData)
+            Return Query.Insert(Me.table, Me.formData)
         End Function
         Public Function Update(ByVal val_where As String)
-            Return Query.UpdateSqlQuery(Me.table, formData, Me.primary_key, val_where)
+            Return Query.Update(Me.table, formData, Me.primary_key, val_where)
         End Function
         Public Function Delete(ByVal val_where As String)
-            Return Query.DeleteSqlQuery(Me.table, Me.primary_key, val_where)
+            Return Query.Delete(Me.table, Me.primary_key, val_where)
         End Function
     End Class
 End Namespace
