@@ -6,7 +6,7 @@ SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP VIEW IF EXISTS `daftar_pembelian`;
-CREATE TABLE `daftar_pembelian` (`Id_Pembelian` varchar(50), `Tanggal_Pembelian` varchar(72), `Jumlah` decimal(32,0));
+CREATE TABLE `daftar_pembelian` (`Id_Pembelian` varchar(50), `Tanggal_Pembelian` varchar(72), `total_harga` decimal(32,2));
 
 
 DROP VIEW IF EXISTS `daftar_produk`;
@@ -46,7 +46,8 @@ CREATE TABLE `tbl_detail_pembelian` (
   `harga_satuan` decimal(10,2) NOT NULL,
   `total_harga` decimal(10,2) NOT NULL,
   `id_pemasok` int(11) NOT NULL,
-  PRIMARY KEY (`id_dpembelian`)
+  PRIMARY KEY (`id_dpembelian`),
+  KEY `id_pembelian` (`id_pembelian`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -139,7 +140,7 @@ CREATE TABLE `tbl_transaksi` (
 
 
 DROP TABLE IF EXISTS `daftar_pembelian`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_pembelian` AS select `b`.`id_pembelian` AS `Id_Pembelian`,date_format(`a`.`tgl_pembelian`,'%d-%M-%Y') AS `Tanggal_Pembelian`,sum(`b`.`jumlah`) AS `Jumlah` from (`tbl_pembelian` `a` join `laporan_detail_pembelian` `b` on((`a`.`id_pembelian` = `b`.`id_pembelian`))) group by `a`.`id_pembelian` order by `a`.`tgl_pembelian` desc;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_pembelian` AS select `b`.`id_pembelian` AS `Id_Pembelian`,date_format(`a`.`tgl_pembelian`,'%d-%M-%Y') AS `Tanggal_Pembelian`,sum(`b`.`total_harga`) AS `total_harga` from (`tbl_pembelian` `a` join `laporan_detail_pembelian` `b` on((`a`.`id_pembelian` = `b`.`id_pembelian`))) group by `a`.`id_pembelian` order by `a`.`tgl_pembelian` desc;
 
 DROP TABLE IF EXISTS `daftar_produk`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_produk` AS select `a`.`id_produk` AS `Id_Produk`,`a`.`nm_produk` AS `Nama_Produk`,`a`.`stok` AS `Stok`,`a`.`id_sat_produk` AS `Id_Sat_Produk`,`c`.`Nama_Satuan` AS `Satuan` from (`tbl_produk` `a` join `daftar_satuan` `c` on((`a`.`id_sat_produk` = `c`.`Id_Sat`)));
@@ -162,4 +163,4 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_detail_transaksi` 
 DROP TABLE IF EXISTS `laporan_pemasok`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_pemasok` AS select `tbl_pemasok`.`id_pemasok` AS `id_pemasok`,`tbl_pemasok`.`nm_pemasok` AS `Nama_Pemasok`,`tbl_pemasok`.`alamat` AS `Alamat`,`tbl_pemasok`.`no_telpon` AS `Nomor_Telepon` from `tbl_pemasok`;
 
--- 2018-07-21 09:47:57
+-- 2018-07-21 23:10:46
