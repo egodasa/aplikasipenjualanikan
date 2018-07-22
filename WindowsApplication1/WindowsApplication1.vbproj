@@ -140,6 +140,12 @@
     <Compile Include="Fpembelian_produk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fpenjualan_produk.Designer.vb">
+      <DependentUpon>Fpenjualan_produk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fpenjualan_produk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Helper.vb" />
     <Compile Include="Fsatuan.Designer.vb">
       <DependentUpon>Fsatuan.vb</DependentUpon>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fpembelian_produk.resx">
       <DependentUpon>Fpembelian_produk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fpenjualan_produk.resx">
+      <DependentUpon>Fpenjualan_produk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fsatuan.resx">
       <DependentUpon>Fsatuan.vb</DependentUpon>

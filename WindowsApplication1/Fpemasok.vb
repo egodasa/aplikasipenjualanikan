@@ -3,7 +3,7 @@
     Dim current_id As Integer
     Private Sub SetFormData()
         pemasok.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_pemasok", "DEFAULT", "id_pemasok"),
+            New SqlHelper.Query("id_pemasok", "DEFAULT", "id_pemasok", False),
             New SqlHelper.Query("nm_pemasok", SqlHelper.Query.SqlString(Tnm_pemasok.Text), "Nama_Pemasok"),
             New SqlHelper.Query("no_telpon", SqlHelper.Query.SqlString(Ttelp.Text), "Nomor_Telepon"),
             New SqlHelper.Query("alamat", SqlHelper.Query.SqlString(Talamat.Text), "Alamat")
@@ -58,7 +58,7 @@
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(pemasok.Update(DGpemasok.CurrentRow.Cells(0).Value.ToString()))
+        runQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
         DGpemasok.DataSource = fetchData(pemasok.SelectAll())

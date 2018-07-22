@@ -3,7 +3,7 @@
     Dim current_id As Integer
     Private Sub SetFormData()
         satuan.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_sat", "DEFAULT", "Id_Sat"),
+            New SqlHelper.Query("id_sat", "DEFAULT", "Id_Sat", False),
             New SqlHelper.Query("nm_sat", SqlHelper.Query.SqlString(Tnm_satuan.Text), "Nama_Satuan")
             }
     End Sub
@@ -23,7 +23,7 @@
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(satuan.Update(DGsatuan.CurrentRow.Cells(0).Value.ToString()))
+        runQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
         DGsatuan.DataSource = fetchData(satuan.SelectMultiple())

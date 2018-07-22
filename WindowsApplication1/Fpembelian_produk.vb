@@ -1,6 +1,7 @@
 ﻿Public Class Fpembelian_produk
     Dim id_pembelian As String
     Dim tgl_pembelian As String
+    Dim current_id As Integer
     Dim detail_pembelian As New SqlHelper.DataQuery
     Private Sub LoadForm(sender As Object, e As EventArgs) Handles MyBase.Load
         SetTransactionValue()
@@ -68,8 +69,8 @@
         Ttotal_bayar.Value = total_harga
     End Sub
 
-    Private Sub DeleteProduct(sender As Object, e As EventArgs) Handles Bdelete.Click
-        runQuery("DELETE FROM tbl_detail_pembelian WHERE id_pembelian = '" + id_pembelian + "' AND id_produk = " & DGproduk.CurrentRow.Cells("id_produk").Value.ToString)
+    Private Sub DeleteProduct(ByVal x As Integer)
+        runQuery("DELETE FROM tbl_detail_pembelian WHERE id_pembelian = '" + id_pembelian + "' AND id_produk = " & DGproduk.Rows(x).Cells("id_produk").Value.ToString)
         DGproduk.DataSource = fetchData(detail_pembelian.SelectAll("id_pembelian", "=", id_pembelian))
         ResetForm()
         TotalBayar()
@@ -91,5 +92,18 @@
 
     Private Sub DaftarPembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DaftarPembelianToolStripMenuItem.Click
         Fdaftar_pembelian.ShowDialog()
+    End Sub
+    Private Sub DGsatuan_MouseClick(sender As Object, e As MouseEventArgs) Handles DGproduk.MouseClick
+        If e.Button = MouseButtons.Right Then
+            Dim pos = DGproduk.HitTest(e.X, e.Y).RowIndex
+            If pos >= 0 Then
+                MenuAksi.Show(DGproduk, New Point(e.X, e.Y))
+                current_id = pos
+            End If
+        End If
+    End Sub
+
+    Private Sub Mhapus_Click(sender As Object, e As EventArgs) Handles Mhapus.Click
+        DeleteProduct(current_id)
     End Sub
 End Class

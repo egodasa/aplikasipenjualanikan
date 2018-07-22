@@ -3,9 +3,10 @@
     Dim current_id As Integer
     Private Sub SetFormData()
         produk.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_produk", "DEFAULT", "Id_Produk"),
+            New SqlHelper.Query("id_produk", "DEFAULT", "Id_Produk", False),
             New SqlHelper.Query("nm_produk", SqlHelper.Query.SqlString(Tnm_produk.Text), "Nama_Produk"),
             New SqlHelper.Query("stok", Tstok.Value.ToString(), "Stok"),
+            New SqlHelper.Query("harga_produk", Thrg_produk.Value.ToString().Replace(",", "."), "Harga_Produk"),
             New SqlHelper.Query("id_sat_produk", Csatuan.SelectedValue.ToString, "Id_Sat_Produk"),
             New SqlHelper.Query(Nothing, Nothing, "Satuan", False)
             }
@@ -27,10 +28,10 @@
 
     Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
         Bedit.Enabled = False
-        Bdelete.Enabled = False
         Bsave.Enabled = True
         Tnm_produk.Focus()
         Tnm_produk.Clear()
+        Thrg_produk.ResetText()
         Tstok.ResetText()
         Tstok.Enabled = True
         Csatuan.SelectedIndex = -1
@@ -50,11 +51,11 @@
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
         Bedit.Enabled = True
-        Bdelete.Enabled = True
         Bsave.Enabled = False
         Tnm_produk.Text = DGproduk.Rows(x).Cells("Nama_Produk").Value
         Tstok.Value = DGproduk.Rows(x).Cells("Stok").Value
         Csatuan.Text = DGproduk.Rows(x).Cells("Satuan").Value
+        Thrg_produk.Value = DGproduk.Rows(x).Cells("Harga_Produk").Value
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
@@ -65,7 +66,7 @@
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(produk.Update(DGproduk.CurrentRow.Cells(0).Value.ToString()))
+        runQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
         DGproduk.DataSource = fetchData(produk.SelectAll())
