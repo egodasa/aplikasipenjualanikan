@@ -15,8 +15,10 @@
         DGproduk.Columns("id_dpembelian").Visible = False
         DGproduk.Columns("id_pemasok").Visible = False
         DGproduk.Columns("id_pembelian").Visible = False
+        DGproduk.Columns("tgl_pembelian").Visible = False
         fetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Cproduk, "Nama_Produk", "Id_Produk")
         fetchComboboxData(SqlHelper.Query.SelectAll("laporan_pemasok"), Cpemasok, "Nama_Pemasok", "Id_Pemasok")
+        fetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
         Tbayar.Value = 0
         Tjumlah.Value = 0
     End Sub
@@ -41,6 +43,17 @@
     End Sub
 
     Private Sub AddProduk(sender As Object, e As EventArgs) Handles Badd.Click
+        If is_baru.Checked = True And Cproduk.SelectedIndex = -1 Then
+            Dim data = New List(Of SqlHelper.Query) From {
+            New SqlHelper.Query("nm_produk", SqlHelper.Query.SqlString(Cproduk.Text), "Nama_Produk"),
+            New SqlHelper.Query("stok", Tjumlah.Value.ToString(), "Stok"),
+            New SqlHelper.Query("harga_produk", Thrg_jual.Value.ToString().Replace(",", "."), "Harga_Produk"),
+            New SqlHelper.Query("id_sat_produk", Csatuan.SelectedValue.ToString, "Id_Sat_Produk")
+            }
+            Dim last_id As DataTable = fetchData(SqlHelper.Query.Insert("tbl_produk", data) & "SELECT LAST_INSERT_ID() AS ID;")
+            fetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Cproduk, "Nama_Produk", "Id_Produk")
+            Cproduk.SelectedValue = last_id.Rows(0).Item(0)
+        End If
         SetProductValue()
         runQuery(detail_pembelian.Insert())
         DGproduk.DataSource = fetchData(detail_pembelian.SelectAll("id_pembelian", "=", id_pembelian))
@@ -53,6 +66,13 @@
         Tjumlah.ResetText()
         Tbayar.ResetText()
         Cproduk.Focus()
+        If is_baru.Checked = True Then
+            is_baru.Checked = False
+            Thrg_jual.Enabled = False
+            Csatuan.Enabled = False
+            Thrg_jual.ResetText()
+            Csatuan.SelectedIndex = -1
+        End If
     End Sub
     Private Sub CancelAction(sender As Object, e As EventArgs) Handles Bcancel.Click
         runQuery(SqlHelper.Query.Delete("tbl_detail_pembelian", "id_pembelian", id_pembelian))
@@ -105,5 +125,10 @@
 
     Private Sub Mhapus_Click(sender As Object, e As EventArgs) Handles Mhapus.Click
         DeleteProduct(current_id)
+    End Sub
+
+    Private Sub is_baru_CheckedChanged(sender As Object, e As EventArgs) Handles is_baru.CheckedChanged
+        Thrg_jual.Enabled = Not Thrg_jual.Enabled
+        Csatuan.Enabled = Not Csatuan.Enabled
     End Sub
 End Class

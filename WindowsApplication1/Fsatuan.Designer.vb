@@ -42,7 +42,7 @@ Partial Class Fsatuan
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox1.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox1.Controls.Add(Me.Bexit)
         Me.GroupBox1.Controls.Add(Me.Bcancel)
         Me.GroupBox1.Controls.Add(Me.DGsatuan)
@@ -166,7 +166,7 @@ Partial Class Fsatuan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.MintCream
+        Me.BackColor = System.Drawing.Color.PowderBlue
         Me.ClientSize = New System.Drawing.Size(487, 243)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

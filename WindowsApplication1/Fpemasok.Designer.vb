@@ -50,7 +50,7 @@ Partial Class Fpemasok
         '
         'GroupBox2
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox2.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox2.Controls.Add(Me.Bcancel)
         Me.GroupBox2.Controls.Add(Me.Bexit)
         Me.GroupBox2.Controls.Add(Me.Bedit)
@@ -122,7 +122,7 @@ Partial Class Fpemasok
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox1.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox1.Controls.Add(Me.Talamat)
         Me.GroupBox1.Controls.Add(Me.Ttelp)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -246,6 +246,7 @@ Partial Class Fpemasok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.PowderBlue
         Me.ClientSize = New System.Drawing.Size(713, 284)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)

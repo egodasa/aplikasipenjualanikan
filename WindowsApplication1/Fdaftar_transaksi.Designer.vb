@@ -40,7 +40,7 @@ Partial Class Fdaftar_transaksi
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox1.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Tcari)
         Me.GroupBox1.Controls.Add(Me.DGtransaksi)
@@ -49,7 +49,7 @@ Partial Class Fdaftar_transaksi
         Me.GroupBox1.Size = New System.Drawing.Size(490, 376)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Daftar Transaksi"
+        Me.GroupBox1.Text = "DAFTAR TRANSAKSI"
         '
         'Label1
         '
@@ -80,7 +80,7 @@ Partial Class Fdaftar_transaksi
         '
         'GroupBox2
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox2.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox2.Controls.Add(Me.Ltotal)
         Me.GroupBox2.Controls.Add(Me.Ltgl_transaksi)
         Me.GroupBox2.Controls.Add(Me.Lid_transaksi)
@@ -90,7 +90,7 @@ Partial Class Fdaftar_transaksi
         Me.GroupBox2.Size = New System.Drawing.Size(521, 376)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Detail Transaksi"
+        Me.GroupBox2.Text = "DETAIL TRANSAKSI"
         '
         'Ltotal
         '
@@ -131,7 +131,7 @@ Partial Class Fdaftar_transaksi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.MintCream
+        Me.BackColor = System.Drawing.Color.PowderBlue
         Me.ClientSize = New System.Drawing.Size(1033, 399)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)

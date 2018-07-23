@@ -58,7 +58,7 @@ Partial Class Fpenjualan_produk
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox1.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox1.Controls.Add(Me.Ttotal_bayar)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -75,17 +75,17 @@ Partial Class Fpenjualan_produk
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(593, 326)
+        Me.GroupBox1.Size = New System.Drawing.Size(593, 298)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Form Penjualan Produk"
+        Me.GroupBox1.Text = "FORM PENJUALAN PRODUK"
         '
         'Ttotal_bayar
         '
         Me.Ttotal_bayar.Location = New System.Drawing.Point(125, 262)
         Me.Ttotal_bayar.Maximum = New Decimal(New Integer() {1410065408, 2, 0, 0})
         Me.Ttotal_bayar.Name = "Ttotal_bayar"
-        Me.Ttotal_bayar.Size = New System.Drawing.Size(462, 23)
+        Me.Ttotal_bayar.Size = New System.Drawing.Size(454, 23)
         Me.Ttotal_bayar.TabIndex = 24
         Me.Ttotal_bayar.ThousandsSeparator = True
         '
@@ -103,7 +103,7 @@ Partial Class Fpenjualan_produk
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 145)
+        Me.Label4.Location = New System.Drawing.Point(8, 145)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(108, 15)
         Me.Label4.TabIndex = 22
@@ -116,7 +116,7 @@ Partial Class Fpenjualan_produk
         Me.Badd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Badd.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Badd.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Badd.Location = New System.Drawing.Point(460, 116)
+        Me.Badd.Location = New System.Drawing.Point(452, 116)
         Me.Badd.Name = "Badd"
         Me.Badd.Size = New System.Drawing.Size(127, 23)
         Me.Badd.TabIndex = 6
@@ -130,7 +130,7 @@ Partial Class Fpenjualan_produk
         Me.Tharga_jual.Location = New System.Drawing.Point(405, 53)
         Me.Tharga_jual.Maximum = New Decimal(New Integer() {1000000000, 0, 0, 0})
         Me.Tharga_jual.Name = "Tharga_jual"
-        Me.Tharga_jual.Size = New System.Drawing.Size(182, 23)
+        Me.Tharga_jual.Size = New System.Drawing.Size(174, 23)
         Me.Tharga_jual.TabIndex = 21
         Me.Tharga_jual.ThousandsSeparator = True
         Me.Tharga_jual.Value = New Decimal(New Integer() {1, 0, 0, 0})
@@ -152,7 +152,7 @@ Partial Class Fpenjualan_produk
         Me.Cproduk.Items.AddRange(New Object() {"1"})
         Me.Cproduk.Location = New System.Drawing.Point(125, 19)
         Me.Cproduk.Name = "Cproduk"
-        Me.Cproduk.Size = New System.Drawing.Size(462, 23)
+        Me.Cproduk.Size = New System.Drawing.Size(454, 23)
         Me.Cproduk.TabIndex = 19
         '
         'Label1
@@ -172,7 +172,7 @@ Partial Class Fpenjualan_produk
         Me.Charga_jual.Items.AddRange(New Object() {"1"})
         Me.Charga_jual.Location = New System.Drawing.Point(125, 87)
         Me.Charga_jual.Name = "Charga_jual"
-        Me.Charga_jual.Size = New System.Drawing.Size(462, 23)
+        Me.Charga_jual.Size = New System.Drawing.Size(454, 23)
         Me.Charga_jual.TabIndex = 17
         '
         'Label3
@@ -188,10 +188,10 @@ Partial Class Fpenjualan_produk
         'DGproduk
         '
         Me.DGproduk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGproduk.Location = New System.Drawing.Point(6, 163)
+        Me.DGproduk.Location = New System.Drawing.Point(11, 163)
         Me.DGproduk.Name = "DGproduk"
         Me.DGproduk.ReadOnly = True
-        Me.DGproduk.Size = New System.Drawing.Size(581, 93)
+        Me.DGproduk.Size = New System.Drawing.Size(568, 93)
         Me.DGproduk.TabIndex = 12
         '
         'Label5
@@ -208,7 +208,7 @@ Partial Class Fpenjualan_produk
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 86)
+        Me.Label2.Location = New System.Drawing.Point(8, 87)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(102, 15)
         Me.Label2.TabIndex = 1
@@ -216,12 +216,12 @@ Partial Class Fpenjualan_produk
         '
         'GroupBox2
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox2.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox2.Controls.Add(Me.Bcancel)
         Me.GroupBox2.Controls.Add(Me.Bexit)
         Me.GroupBox2.Controls.Add(Me.Bsave)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 359)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 331)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(593, 49)
         Me.GroupBox2.TabIndex = 9
@@ -272,10 +272,11 @@ Partial Class Fpenjualan_produk
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Khaki
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(611, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(617, 24)
         Me.MenuStrip1.TabIndex = 11
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -302,7 +303,8 @@ Partial Class Fpenjualan_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 420)
+        Me.BackColor = System.Drawing.Color.PowderBlue
+        Me.ClientSize = New System.Drawing.Size(617, 392)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.MenuStrip1)

@@ -25,6 +25,8 @@ Partial Class Fkelola_produk
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fkelola_produk))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Thrg_produk = New System.Windows.Forms.NumericUpDown()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Tstok = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Csatuan = New System.Windows.Forms.ComboBox()
@@ -42,19 +44,17 @@ Partial Class Fkelola_produk
         Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Medit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Thrg_produk = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.Thrg_produk, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.MenuAksi.SuspendLayout()
-        CType(Me.Thrg_produk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox1.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox1.Controls.Add(Me.Thrg_produk)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Tstok)
@@ -73,6 +73,25 @@ Partial Class Fkelola_produk
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "KELOLA DATA PRODUK"
+        '
+        'Thrg_produk
+        '
+        Me.Thrg_produk.DecimalPlaces = 2
+        Me.Thrg_produk.Location = New System.Drawing.Point(125, 82)
+        Me.Thrg_produk.Maximum = New Decimal(New Integer() {1215752192, 23, 0, 0})
+        Me.Thrg_produk.Name = "Thrg_produk"
+        Me.Thrg_produk.Size = New System.Drawing.Size(450, 23)
+        Me.Thrg_produk.TabIndex = 18
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(13, 82)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(63, 15)
+        Me.Label3.TabIndex = 17
+        Me.Label3.Text = "Harga Jual"
         '
         'Tstok
         '
@@ -107,16 +126,16 @@ Partial Class Fkelola_produk
         Me.Tnm_produk.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tnm_produk.Location = New System.Drawing.Point(125, 24)
         Me.Tnm_produk.Name = "Tnm_produk"
-        Me.Tnm_produk.Size = New System.Drawing.Size(462, 23)
+        Me.Tnm_produk.Size = New System.Drawing.Size(450, 23)
         Me.Tnm_produk.TabIndex = 13
         '
         'DGproduk
         '
         Me.DGproduk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGproduk.Location = New System.Drawing.Point(11, 167)
+        Me.DGproduk.Location = New System.Drawing.Point(16, 173)
         Me.DGproduk.Name = "DGproduk"
         Me.DGproduk.ReadOnly = True
-        Me.DGproduk.Size = New System.Drawing.Size(577, 133)
+        Me.DGproduk.Size = New System.Drawing.Size(559, 119)
         Me.DGproduk.TabIndex = 12
         '
         'Tcari
@@ -124,14 +143,14 @@ Partial Class Fkelola_produk
         Me.Tcari.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tcari.Location = New System.Drawing.Point(125, 138)
         Me.Tcari.Name = "Tcari"
-        Me.Tcari.Size = New System.Drawing.Size(462, 23)
+        Me.Tcari.Size = New System.Drawing.Size(450, 23)
         Me.Tcari.TabIndex = 11
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(8, 138)
+        Me.Label6.Location = New System.Drawing.Point(13, 138)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(100, 15)
         Me.Label6.TabIndex = 10
@@ -141,7 +160,7 @@ Partial Class Fkelola_produk
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(6, 53)
+        Me.Label5.Location = New System.Drawing.Point(13, 53)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(72, 15)
         Me.Label5.TabIndex = 4
@@ -151,7 +170,7 @@ Partial Class Fkelola_produk
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 24)
+        Me.Label2.Location = New System.Drawing.Point(13, 24)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(80, 15)
         Me.Label2.TabIndex = 1
@@ -178,7 +197,7 @@ Partial Class Fkelola_produk
         Me.Bexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Bexit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Bexit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bexit.Location = New System.Drawing.Point(11, 129)
+        Me.Bexit.Location = New System.Drawing.Point(9, 129)
         Me.Bexit.Name = "Bexit"
         Me.Bexit.Size = New System.Drawing.Size(75, 23)
         Me.Bexit.TabIndex = 2
@@ -187,7 +206,7 @@ Partial Class Fkelola_produk
         '
         'GroupBox2
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Honeydew
+        Me.GroupBox2.BackColor = System.Drawing.Color.PaleTurquoise
         Me.GroupBox2.Controls.Add(Me.Bcancel)
         Me.GroupBox2.Controls.Add(Me.Bexit)
         Me.GroupBox2.Controls.Add(Me.Bedit)
@@ -207,7 +226,7 @@ Partial Class Fkelola_produk
         Me.Bcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Bcancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Bcancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Bcancel.Location = New System.Drawing.Point(11, 90)
+        Me.Bcancel.Location = New System.Drawing.Point(9, 91)
         Me.Bcancel.Name = "Bcancel"
         Me.Bcancel.Size = New System.Drawing.Size(75, 23)
         Me.Bcancel.TabIndex = 5
@@ -249,30 +268,11 @@ Partial Class Fkelola_produk
         Me.Mhapus.Size = New System.Drawing.Size(108, 22)
         Me.Mhapus.Text = "Hapus"
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 82)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(80, 15)
-        Me.Label3.TabIndex = 17
-        Me.Label3.Text = "Harga Produk"
-        '
-        'Thrg_produk
-        '
-        Me.Thrg_produk.DecimalPlaces = 2
-        Me.Thrg_produk.Location = New System.Drawing.Point(125, 82)
-        Me.Thrg_produk.Maximum = New Decimal(New Integer() {1215752192, 23, 0, 0})
-        Me.Thrg_produk.Name = "Thrg_produk"
-        Me.Thrg_produk.Size = New System.Drawing.Size(462, 23)
-        Me.Thrg_produk.TabIndex = 18
-        '
         'Fkelola_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.MintCream
+        Me.BackColor = System.Drawing.Color.PowderBlue
         Me.ClientSize = New System.Drawing.Size(717, 330)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -281,11 +281,11 @@ Partial Class Fkelola_produk
         Me.Text = "Kelola Produk"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.Thrg_produk, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.MenuAksi.ResumeLayout(False)
-        CType(Me.Thrg_produk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
