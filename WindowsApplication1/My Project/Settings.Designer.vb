@@ -53,6 +53,66 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("localhost")>  _
+        Public Property db_server() As String
+            Get
+                Return CType(Me("db_server"),String)
+            End Get
+            Set
+                Me("db_server") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("root")>  _
+        Public Property db_username() As String
+            Get
+                Return CType(Me("db_username"),String)
+            End Get
+            Set
+                Me("db_username") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property db_password() As String
+            Get
+                Return CType(Me("db_password"),String)
+            End Get
+            Set
+                Me("db_password") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\LaporanPenjualan")>  _
+        Public Property apps_folder() As String
+            Get
+                Return CType(Me("apps_folder"),String)
+            End Get
+            Set
+                Me("apps_folder") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("dblaporan_penjualanv2")>  _
+        Public Property db_database() As String
+            Get
+                Return CType(Me("db_database"),String)
+            End Get
+            Set
+                Me("db_database") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

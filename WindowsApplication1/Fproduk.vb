@@ -12,7 +12,7 @@
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Call setKoneksi()
+        Call SetKoneksi()
         Call fetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
         produk.table = "tbl_produk"
         produk.view = "daftar_produk"

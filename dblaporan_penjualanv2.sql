@@ -5,6 +5,10 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP DATABASE IF EXISTS `dblaporan_penjualanv2`;
+CREATE DATABASE `dblaporan_penjualanv2` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `dblaporan_penjualanv2`;
+
 DROP VIEW IF EXISTS `daftar_pembelian`;
 CREATE TABLE `daftar_pembelian` (`Id_Pembelian` varchar(50), `Tanggal_Pembelian` varchar(72), `total_harga` decimal(32,2));
 
@@ -22,11 +26,11 @@ CREATE TABLE `daftar_satuan` (`Id_Sat` int(11), `Nama_Satuan` varchar(30));
 
 
 DROP VIEW IF EXISTS `daftar_transaksi`;
-CREATE TABLE `daftar_transaksi` (`Id_Transaksi` varchar(50), `Tanggal_Transaksi` varchar(72), `Jumlah` decimal(54,0));
+CREATE TABLE `daftar_transaksi` (`Id_Transaksi` varchar(50), `Tanggal_Transaksi` varchar(72), `Total_Harga` decimal(42,2));
 
 
 DROP VIEW IF EXISTS `detail_pembelian`;
-CREATE TABLE `detail_pembelian` (`keterangan` varchar(177), `id_dpembelian` int(11), `id_produk` int(11));
+CREATE TABLE `detail_pembelian` (`keterangan` varchar(156), `id_dpembelian` int(11), `id_produk` int(11));
 
 
 DROP VIEW IF EXISTS `laporan_detail_pembelian`;
@@ -161,10 +165,10 @@ DROP TABLE IF EXISTS `daftar_satuan`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_satuan` AS select `a`.`id_sat` AS `Id_Sat`,`a`.`nm_sat` AS `Nama_Satuan` from `tbl_satuan` `a`;
 
 DROP TABLE IF EXISTS `daftar_transaksi`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_transaksi` AS select `b`.`Id_Transaksi` AS `Id_Transaksi`,date_format(`a`.`tgl_transaksi`,'%d-%M-%Y') AS `Tanggal_Transaksi`,sum(`b`.`Jumlah`) AS `Jumlah` from (`tbl_transaksi` `a` join `daftar_produk_beli` `b` on((`a`.`id_transaksi` = `b`.`Id_Transaksi`))) group by `a`.`id_transaksi` order by `a`.`tgl_transaksi` desc;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `daftar_transaksi` AS select `b`.`Id_Transaksi` AS `Id_Transaksi`,date_format(`a`.`tgl_transaksi`,'%d-%M-%Y') AS `Tanggal_Transaksi`,sum(`b`.`Total_Harga`) AS `Total_Harga` from (`tbl_transaksi` `a` join `laporan_detail_transaksi` `b` on((`a`.`id_transaksi` = `b`.`Id_Transaksi`))) group by `a`.`id_transaksi` order by `a`.`tgl_transaksi` desc;
 
 DROP TABLE IF EXISTS `detail_pembelian`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `detail_pembelian` AS select concat('Harga Satuan Rp ',`b`.`harga_satuan`,', pembelian pada tanggal ',date_format(`a`.`tgl_pembelian`,'%d %M %Y'),' sebanyak ',`b`.`jumlah`,' ',`b`.`Satuan`) AS `keterangan`,`b`.`id_dpembelian` AS `id_dpembelian`,`b`.`id_produk` AS `id_produk` from (`tbl_pembelian` `a` join `laporan_detail_pembelian` `b` on((`a`.`id_pembelian` = `b`.`id_pembelian`)));
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `detail_pembelian` AS select concat('Rp ',`b`.`harga_satuan`,'/satuan, Tanggal ',date_format(`a`.`tgl_pembelian`,'%d %M %Y'),' sebanyak ',`b`.`jumlah`,' ',`b`.`Satuan`) AS `keterangan`,`b`.`id_dpembelian` AS `id_dpembelian`,`b`.`id_produk` AS `id_produk` from (`tbl_pembelian` `a` join `laporan_detail_pembelian` `b` on((`a`.`id_pembelian` = `b`.`id_pembelian`)));
 
 DROP TABLE IF EXISTS `laporan_detail_pembelian`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_detail_pembelian` AS select `a`.`id_produk` AS `id_produk`,`a`.`id_dpembelian` AS `id_dpembelian`,`d`.`tgl_pembelian` AS `tgl_pembelian`,`a`.`id_pemasok` AS `id_pemasok`,`a`.`id_pembelian` AS `id_pembelian`,`b`.`Nama_Produk` AS `Nama_Produk`,`a`.`jumlah` AS `jumlah`,`a`.`harga_satuan` AS `harga_satuan`,`a`.`total_harga` AS `total_harga`,`b`.`Satuan` AS `Satuan`,`c`.`Nama_Pemasok` AS `Nama_Pemasok` from (((`tbl_detail_pembelian` `a` join `daftar_produk` `b` on((`a`.`id_produk` = `b`.`Id_Produk`))) join `laporan_pemasok` `c` on((`a`.`id_pemasok` = `c`.`id_pemasok`))) left join `tbl_pembelian` `d` on((`a`.`id_pembelian` = `d`.`id_pembelian`)));
@@ -178,4 +182,4 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_laba_rugi` AS sele
 DROP TABLE IF EXISTS `laporan_pemasok`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `laporan_pemasok` AS select `tbl_pemasok`.`id_pemasok` AS `id_pemasok`,`tbl_pemasok`.`nm_pemasok` AS `Nama_Pemasok`,`tbl_pemasok`.`alamat` AS `Alamat`,`tbl_pemasok`.`no_telpon` AS `Nomor_Telepon` from `tbl_pemasok`;
 
--- 2018-07-22 09:45:28
+-- 2018-07-23 06:59:11

@@ -308,6 +308,7 @@ Partial Class Fpenjualan_produk
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fpenjualan_produk"
         Me.Text = "Form Penjualan Produk"
         Me.GroupBox1.ResumeLayout(False)

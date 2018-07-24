@@ -250,6 +250,7 @@ Partial Class Fpemasok
         Me.ClientSize = New System.Drawing.Size(713, 284)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fpemasok"
         Me.Text = "Kelola Data Pemasok"
         Me.GroupBox2.ResumeLayout(False)

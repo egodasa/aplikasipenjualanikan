@@ -10,7 +10,9 @@
         Ltotal.Text = "Total Harga : " & Format(DGtransaksi.CurrentRow.Cells("Total_Harga").Value, "Rp,   ##,##0")
         DGdetail.DataSource = fetchData("select * from laporan_detail_transaksi where Id_Transaksi = '" & DGtransaksi.CurrentRow.Cells("Id_Transaksi").Value & "'")
         DGdetail.Columns("Id_Transaksi").Visible = False
-        DGdetail.Columns("Id_Obat").Visible = False
+        DGdetail.Columns("id_dtransaksi").Visible = False
+        DGdetail.Columns("id_dpembelian").Visible = False
+        DGdetail.Columns("Id_Produk").Visible = False
     End Sub
 
     Private Sub TextBox1_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Tcari.KeyUp

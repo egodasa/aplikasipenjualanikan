@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports System.Text
 Module helper
     Public kon As MySqlConnection
     Public da As MySqlDataAdapter
@@ -9,10 +8,25 @@ Module helper
     Public str As String
     Public username As String
     Public jenis_pengguna As String
-    Public main_form As Form
-    Public _DIR As String = "F:\Program\visual_basic\skripsitia\WindowsApplication1\"
-    Sub setKoneksi()
-        str = "Server=localhost;uid=root;pwd=;database=dblaporan_penjualanv2;port=3306"
+    Public main_form As Form = Fmenu
+    Public _DIR As String = My.Settings.apps_folder
+    Function TestKoneksi(ByVal username As String, ByVal password As String, ByVal server As String, Optional ByVal db As String = Nothing)
+        Dim str = "Server=" & server & ";uid=" & username & ";pwd=" & password & ";database=" & db & ";port=3306"
+        kon = New MySqlConnection(str)
+        If kon.State = ConnectionState.Closed Then
+            Try
+                kon.Open()
+                kon.Close()
+                Return New SqlHelper.SqlMessages(1, "Koneksi MYSQL berhasil!")
+            Catch ex As Exception
+                Return New SqlHelper.SqlMessages(2, "Tidak dapat terhubung ke MYSQL " & vbCrLf & "Pesan error : " & vbCrLf & ex.Message)
+            End Try
+        Else
+            Return New SqlHelper.SqlMessages(0, "Tidak dapat terhubung ke MYSQL. Pastikan MYSQL sudah dihidupkan.")
+        End If
+    End Function
+    Sub SetKoneksi()
+        str = "Server=" & My.Settings.db_server & ";uid=" & My.Settings.db_username & ";pwd=" & My.Settings.db_password & ";database=" & My.Settings.db_database & ";port=3306"
         kon = New MySqlConnection(str)
         If kon.State = ConnectionState.Closed Then
             Try
@@ -26,7 +40,7 @@ Module helper
         End If
     End Sub
     Function fetchData(ByVal q As String)
-        Call setKoneksi()
+        Call SetKoneksi()
         Try
             da = New MySqlDataAdapter(q, kon)
             ds = New DataSet
@@ -38,6 +52,7 @@ Module helper
         End Try
     End Function
     Sub runQuery(ByVal q As String)
+        Call SetKoneksi()
         Try
             cmd = New MySqlCommand(q, kon)
             cmd.Connection = kon

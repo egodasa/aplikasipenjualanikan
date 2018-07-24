@@ -10,7 +10,7 @@
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Call setKoneksi()
+        Call SetKoneksi()
         pemasok.table = "tbl_pemasok"
         pemasok.view = "laporan_pemasok"
         pemasok.primary_key = "id_pemasok"

@@ -13,6 +13,7 @@
         DGdetail.Columns("id_produk").Visible = False
         DGdetail.Columns("id_dpembelian").Visible = False
         DGdetail.Columns("id_pembelian").Visible = False
+        DGdetail.Columns("tgl_pembelian").Visible = False
     End Sub
 
     Private Sub Tcari_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Tcari.KeyUp

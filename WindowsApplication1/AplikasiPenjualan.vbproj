@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -79,6 +79,11 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>assets\laporan_c9wLWA.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -128,6 +133,12 @@
     <Compile Include="Fdaftar_pembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fmenu.Designer.vb">
+      <DependentUpon>Fmenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fmenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Fpemasok.Designer.vb">
       <DependentUpon>Fpemasok.vb</DependentUpon>
     </Compile>
@@ -138,6 +149,12 @@
       <DependentUpon>Fpembelian_produk.vb</DependentUpon>
     </Compile>
     <Compile Include="Fpembelian_produk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fpengaturan.Designer.vb">
+      <DependentUpon>Fpengaturan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fpengaturan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fpenjualan_produk.Designer.vb">
@@ -188,11 +205,17 @@
     <EmbeddedResource Include="Fdaftar_pembelian.resx">
       <DependentUpon>Fdaftar_pembelian.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fmenu.resx">
+      <DependentUpon>Fmenu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fpemasok.resx">
       <DependentUpon>Fpemasok.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fpembelian_produk.resx">
       <DependentUpon>Fpembelian_produk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fpengaturan.resx">
+      <DependentUpon>Fpengaturan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fpenjualan_produk.resx">
       <DependentUpon>Fpenjualan_produk.vb</DependentUpon>
@@ -256,10 +279,27 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="laporan\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="assets\edit-solid.png" />
+    <Content Include="assets\icons8-close-window-96.png" />
+    <Content Include="assets\icons8-edit-file-96.png" />
+    <Content Include="assets\icons8-save-all-96.png" />
+    <Content Include="assets\icons8-shutdown-96.png" />
+    <Content Include="assets\icons8-supplier-96.png" />
     <Content Include="assets\if_cross-24_103181.png" />
+    <Content Include="assets\laporan_c9wLWA.ico" />
+    <Content Include="assets\loading.gif" />
+    <Content Include="assets\pemasok.png" />
+    <Content Include="assets\pembelian.png" />
+    <Content Include="assets\penjualan.png" />
+    <Content Include="assets\produk.png" />
+    <Content Include="assets\supplier.png" />
+    <Content Include="database\dblaporan_penjualanv2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

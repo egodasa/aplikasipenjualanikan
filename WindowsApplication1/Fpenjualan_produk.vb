@@ -14,6 +14,7 @@
         DGproduk.Columns("id_Produk").Visible = False
         DGproduk.Columns("id_Transaksi").Visible = False
         DGproduk.Columns("id_dtransaksi").Visible = False
+        DGproduk.Columns("id_dpembelian").Visible = False
         fetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Cproduk, "Nama_Produk", "Id_Produk")
         fetchComboboxData(SqlHelper.Query.SelectAll("detail_pembelian", "id_produk", "=", Cproduk.SelectedValue.ToString), Charga_jual, "keterangan", "id_dpembelian")
         Tharga_jual.Value = 0
