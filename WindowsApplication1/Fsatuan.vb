@@ -2,9 +2,8 @@
     Dim satuan As New SqlHelper.DataQuery
     Dim current_id As Integer
     Private Sub SetFormData()
-        satuan.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_sat", "DEFAULT", "Id_Sat", False),
-            New SqlHelper.Query("nm_sat", SqlHelper.Query.SqlString(Tnm_satuan.Text), "Nama_Satuan")
+        satuan.formData = New List(Of SqlHelper.SqlManipulation) From {
+            New SqlHelper.SqlManipulation("nm_sat", SqlHelper.Query.SqlString(Tnm_satuan.Text))
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -12,8 +11,11 @@
         satuan.view = Nothing
         satuan.primary_key = "id_sat"
         satuan.primary_key_caption = "Id_Sat"
-        SetFormData()
-        DGsatuan.DataSource = fetchData(satuan.SelectMultiple())
+        satuan.viewData = New List(Of SqlHelper.SqlView) From {
+            New SqlHelper.SqlView("id_sat", "Id_Sat"),
+            New SqlHelper.SqlView("nm_sat", "Nama_Satuan")
+            }
+        DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
         DGsatuan.Columns(satuan.primary_key_caption).Visible = False
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
@@ -23,28 +25,33 @@
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
+        RunQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGsatuan.DataSource = fetchData(satuan.SelectMultiple())
+        DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
-            runQuery(satuan.Delete(DGsatuan.Rows(x).Cells(0).Value))
-            DGsatuan.DataSource = fetchData(satuan.SelectMultiple())
+            RunQuery(satuan.Delete(DGsatuan.Rows(x).Cells(0).Value))
+            DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
             Bcancel.PerformClick()
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
         SetFormData()
-        runQuery(satuan.Insert())
+        RunQuery(satuan.Insert())
         Call successMessage()
-        DGsatuan.DataSource = fetchData(satuan.SelectMultiple())
+        DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
         Bcancel.PerformClick()
     End Sub
     Private Sub CloseForm(sender As Object, e As EventArgs) Handles Bexit.Click
+        If Fkelola_produk.Visible = True Then
+            Call FetchComboboxData("select * from daftar_satuan", Fkelola_produk.Csatuan, "Nama_Satuan", "Id_Sat")
+        End If
+        If Fpembelian_produk.Visible = True Then
+            Call FetchComboboxData("select * from daftar_satuan", Fpembelian_produk.Csatuan, "Nama_Satuan", "Id_Sat")
+        End If
         If MessageBox.Show("Apakah Anda yakin ingin KELUAR?", "Peringatan!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            main_form.Show()
             Me.Close()
         End If
     End Sub

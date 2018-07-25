@@ -44,12 +44,15 @@ Partial Class Fkelola_produk
         Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Medit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.DaftarSatuanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Thrg_produk, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tstok, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.MenuAksi.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -67,7 +70,7 @@ Partial Class Fkelola_produk
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 30)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(593, 306)
         Me.GroupBox1.TabIndex = 0
@@ -115,7 +118,7 @@ Partial Class Fkelola_produk
         '
         Me.Csatuan.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Csatuan.FormattingEnabled = True
-        Me.Csatuan.Items.AddRange(New Object() {"q"})
+        Me.Csatuan.Items.AddRange(New Object() {"1"})
         Me.Csatuan.Location = New System.Drawing.Point(343, 53)
         Me.Csatuan.Name = "Csatuan"
         Me.Csatuan.Size = New System.Drawing.Size(121, 23)
@@ -212,7 +215,7 @@ Partial Class Fkelola_produk
         Me.GroupBox2.Controls.Add(Me.Bedit)
         Me.GroupBox2.Controls.Add(Me.Bsave)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(611, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(611, 30)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(95, 167)
         Me.GroupBox2.TabIndex = 3
@@ -268,15 +271,34 @@ Partial Class Fkelola_produk
         Me.Mhapus.Size = New System.Drawing.Size(108, 22)
         Me.Mhapus.Text = "Hapus"
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Khaki
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarSatuanToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(717, 24)
+        Me.MenuStrip1.TabIndex = 4
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'DaftarSatuanToolStripMenuItem
+        '
+        Me.DaftarSatuanToolStripMenuItem.Name = "DaftarSatuanToolStripMenuItem"
+        Me.DaftarSatuanToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.DaftarSatuanToolStripMenuItem.Text = "Daftar Satuan"
+        '
         'Fkelola_produk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PowderBlue
-        Me.ClientSize = New System.Drawing.Size(717, 330)
+        Me.ClientSize = New System.Drawing.Size(717, 343)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Fkelola_produk"
         Me.Text = "Kelola Produk"
         Me.GroupBox1.ResumeLayout(False)
@@ -286,7 +308,10 @@ Partial Class Fkelola_produk
         CType(Me.DGproduk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.MenuAksi.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -309,4 +334,6 @@ Partial Class Fkelola_produk
     Friend WithEvents Mhapus As ToolStripMenuItem
     Friend WithEvents Label3 As Label
     Friend WithEvents Thrg_produk As NumericUpDown
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents DaftarSatuanToolStripMenuItem As ToolStripMenuItem
 End Class

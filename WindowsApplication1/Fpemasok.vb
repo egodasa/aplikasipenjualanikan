@@ -2,11 +2,10 @@
     Dim pemasok As New SqlHelper.DataQuery
     Dim current_id As Integer
     Private Sub SetFormData()
-        pemasok.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_pemasok", "DEFAULT", "id_pemasok", False),
-            New SqlHelper.Query("nm_pemasok", SqlHelper.Query.SqlString(Tnm_pemasok.Text), "Nama_Pemasok"),
-            New SqlHelper.Query("no_telpon", SqlHelper.Query.SqlString(Ttelp.Text), "Nomor_Telepon"),
-            New SqlHelper.Query("alamat", SqlHelper.Query.SqlString(Talamat.Text), "Alamat")
+        pemasok.formData = New List(Of SqlHelper.SqlManipulation) From {
+            New SqlHelper.SqlManipulation("nm_pemasok", SqlHelper.Query.SqlString(Tnm_pemasok.Text)),
+            New SqlHelper.SqlManipulation("no_telpon", SqlHelper.Query.SqlString(Ttelp.Text)),
+            New SqlHelper.SqlManipulation("alamat", SqlHelper.Query.SqlString(Talamat.Text))
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -15,9 +14,14 @@
         pemasok.view = "laporan_pemasok"
         pemasok.primary_key = "id_pemasok"
         pemasok.primary_key_caption = "id_pemasok"
-        DGpemasok.DataSource = fetchData(pemasok.SelectAll())
+        pemasok.viewData = New List(Of SqlHelper.SqlView) From {
+            New SqlHelper.SqlView("id_pemasok", "id_pemasok"),
+            New SqlHelper.SqlView("nm_pemasok", "Nama_Pemasok"),
+            New SqlHelper.SqlView("no_telpon", "Nomor_Telepon"),
+            New SqlHelper.SqlView("alamat", "Alamat")
+            }
+        DGpemasok.DataSource = FetchData(pemasok.SelectAll())
         DGpemasok.Columns(pemasok.primary_key_caption).Visible = False
-        SetFormData()
         Bcancel.PerformClick()
     End Sub
 
@@ -37,9 +41,9 @@
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
         SetFormData()
-        runQuery(pemasok.Insert())
+        RunQuery(pemasok.Insert())
         Call successMessage()
-        DGpemasok.DataSource = fetchData(pemasok.SelectAll())
+        DGpemasok.DataSource = FetchData(pemasok.SelectAll())
         Bcancel.PerformClick()
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
@@ -51,24 +55,24 @@
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
-            runQuery(pemasok.Delete(DGpemasok.Rows(x).Cells(0).Value))
-            DGpemasok.DataSource = fetchData(pemasok.SelectAll())
+            RunQuery(pemasok.Delete(DGpemasok.Rows(x).Cells(0).Value))
+            DGpemasok.DataSource = FetchData(pemasok.SelectAll())
             Bcancel.PerformClick()
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
+        RunQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGpemasok.DataSource = fetchData(pemasok.SelectAll())
+        DGpemasok.DataSource = FetchData(pemasok.SelectAll())
     End Sub
 
     Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
         If Tcari.Text.Length <> 0 Then
-            DGpemasok.DataSource = fetchData("select * from daftar_pemasok where `Nama_Pemasok` like '%" & Tcari.Text & "%'")
+            DGpemasok.DataSource = FetchData("select * from daftar_pemasok where `Nama_Pemasok` like '%" & Tcari.Text & "%'")
         Else
-            DGpemasok.DataSource = fetchData(pemasok.SelectAll())
+            DGpemasok.DataSource = FetchData(pemasok.SelectAll())
         End If
     End Sub
 

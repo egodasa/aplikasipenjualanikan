@@ -1,4 +1,20 @@
 ﻿Namespace SqlHelper
+    Public Class SqlView
+        Public Name As String
+        Public Caption As String
+        Public Sub New(ByVal Name As String, ByVal Caption As String)
+            Me.Name = Name
+            Me.Caption = Caption
+        End Sub
+    End Class
+    Public Class SqlManipulation
+        Public Name As String
+        Public Value As Object
+        Public Sub New(ByVal Name As String, ByVal Value As String)
+            Me.Name = Name
+            Me.Value = Value
+        End Sub
+    End Class
     Public Class Query
         Public Name As String
         Public Value As Object
@@ -20,9 +36,9 @@
                 Return "select * from " & table
             End If
         End Function
-        Public Shared Function SelectMultiple(ByVal table As String, ByVal x As List(Of Query), Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
+        Public Shared Function SelectMultiple(ByVal table As String, ByVal x As List(Of SqlView), Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
             Dim hasil As New List(Of String)
-            For Each y As Query In x
+            For Each y As SqlView In x
                 hasil.Add(y.Name + " AS `" + y.Caption + "`")
             Next
             If where <> Nothing Then
@@ -32,23 +48,19 @@
             End If
 
         End Function
-        Public Shared Function Insert(ByVal table As String, ByVal x As List(Of Query))
+        Public Shared Function Insert(ByVal table As String, ByVal x As List(Of SqlManipulation))
             Dim kolom As New List(Of String)
             Dim nilai As New List(Of String)
-            For Each y As Query In x
-                If y.Insertable = True Then
-                    kolom.Add("`" + y.Name + "`")
-                    nilai.Add(y.Value.ToString())
-                End If
+            For Each y As SqlManipulation In x
+                kolom.Add("`" + y.Name + "`")
+                nilai.Add(y.Value.ToString())
             Next
             Return "insert into " & table & " (" & String.Join(",", kolom) & ") values(" & String.Join(",", nilai) & ");"
         End Function
-        Public Shared Function Update(ByVal table As String, ByVal x As List(Of Query), ByVal where As String, ByVal where_val As String)
+        Public Shared Function Update(ByVal table As String, ByVal x As List(Of SqlManipulation), ByVal where As String, ByVal where_val As String)
             Dim hasil As New List(Of String)
-            For Each y As Query In x
-                If y.Insertable = True Then
-                    hasil.Add(y.Name + " = " + y.Value)
-                End If
+            For Each y As SqlManipulation In x
+                hasil.Add(y.Name + " = " + y.Value)
             Next
             Return "update " & table & " set " & String.Join(",", hasil) & " where " & where & " = " & where_val & ";"
         End Function
@@ -61,7 +73,8 @@
         Public view As String
         Public primary_key As String
         Public primary_key_caption As String
-        Public formData As New List(Of Query)
+        Public formData As New List(Of SqlManipulation)
+        Public viewData As New List(Of SqlView)
         Public Function SelectAll(Optional ByVal where As String = Nothing, Optional ByVal op As String = Nothing, Optional ByVal where_val As String = Nothing)
             Dim tabel = Me.table
             If Me.view <> Nothing Then
@@ -80,9 +93,9 @@
                 tabel = Me.view
             End If
             If where <> Nothing Then
-                Return Query.SelectMultiple(tabel, Me.formData, where, op, where_val)
+                Return Query.SelectMultiple(tabel, Me.viewData, where, op, where_val)
             Else
-                Return Query.SelectMultiple(tabel, Me.formData)
+                Return Query.SelectMultiple(tabel, Me.viewData)
             End If
 
         End Function

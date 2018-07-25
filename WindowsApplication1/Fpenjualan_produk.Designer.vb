@@ -44,6 +44,8 @@ Partial Class Fpenjualan_produk
         Me.Bsave = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.DaftarPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DaftarProdukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DaftarSatuanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
@@ -143,7 +145,6 @@ Partial Class Fpenjualan_produk
         Me.Tjumlah.Size = New System.Drawing.Size(157, 23)
         Me.Tjumlah.TabIndex = 20
         Me.Tjumlah.ThousandsSeparator = True
-        Me.Tjumlah.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Cproduk
         '
@@ -273,7 +274,7 @@ Partial Class Fpenjualan_produk
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Khaki
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem, Me.DaftarProdukToolStripMenuItem, Me.DaftarSatuanToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(617, 24)
@@ -285,6 +286,18 @@ Partial Class Fpenjualan_produk
         Me.DaftarPembelianToolStripMenuItem.Name = "DaftarPembelianToolStripMenuItem"
         Me.DaftarPembelianToolStripMenuItem.Size = New System.Drawing.Size(106, 20)
         Me.DaftarPembelianToolStripMenuItem.Text = "Daftar Penjualan"
+        '
+        'DaftarProdukToolStripMenuItem
+        '
+        Me.DaftarProdukToolStripMenuItem.Name = "DaftarProdukToolStripMenuItem"
+        Me.DaftarProdukToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
+        Me.DaftarProdukToolStripMenuItem.Text = "Daftar Produk"
+        '
+        'DaftarSatuanToolStripMenuItem
+        '
+        Me.DaftarSatuanToolStripMenuItem.Name = "DaftarSatuanToolStripMenuItem"
+        Me.DaftarSatuanToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.DaftarSatuanToolStripMenuItem.Text = "Daftar Satuan"
         '
         'MenuAksi
         '
@@ -308,6 +321,7 @@ Partial Class Fpenjualan_produk
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fpenjualan_produk"
         Me.Text = "Form Penjualan Produk"
@@ -348,4 +362,6 @@ Partial Class Fpenjualan_produk
     Friend WithEvents DaftarPembelianToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MenuAksi As ContextMenuStrip
     Friend WithEvents Mhapus As ToolStripMenuItem
+    Friend WithEvents DaftarProdukToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DaftarSatuanToolStripMenuItem As ToolStripMenuItem
 End Class

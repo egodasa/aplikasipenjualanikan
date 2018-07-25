@@ -48,6 +48,8 @@ Partial Class Fpembelian_produk
         Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.DaftarPembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DaftarProdukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DaftarSatuanToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuAksi = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Mhapus = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -236,7 +238,6 @@ Partial Class Fpembelian_produk
         Me.Tbayar.Size = New System.Drawing.Size(182, 23)
         Me.Tbayar.TabIndex = 21
         Me.Tbayar.ThousandsSeparator = True
-        Me.Tbayar.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Tjumlah
         '
@@ -246,7 +247,6 @@ Partial Class Fpembelian_produk
         Me.Tjumlah.Size = New System.Drawing.Size(182, 23)
         Me.Tjumlah.TabIndex = 20
         Me.Tjumlah.ThousandsSeparator = True
-        Me.Tjumlah.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Cproduk
         '
@@ -321,7 +321,7 @@ Partial Class Fpembelian_produk
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Khaki
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DaftarPembelianToolStripMenuItem, Me.DaftarProdukToolStripMenuItem, Me.DaftarSatuanToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(625, 24)
@@ -333,6 +333,18 @@ Partial Class Fpembelian_produk
         Me.DaftarPembelianToolStripMenuItem.Name = "DaftarPembelianToolStripMenuItem"
         Me.DaftarPembelianToolStripMenuItem.Size = New System.Drawing.Size(110, 20)
         Me.DaftarPembelianToolStripMenuItem.Text = "Daftar Pembelian"
+        '
+        'DaftarProdukToolStripMenuItem
+        '
+        Me.DaftarProdukToolStripMenuItem.Name = "DaftarProdukToolStripMenuItem"
+        Me.DaftarProdukToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
+        Me.DaftarProdukToolStripMenuItem.Text = "Daftar Produk"
+        '
+        'DaftarSatuanToolStripMenuItem
+        '
+        Me.DaftarSatuanToolStripMenuItem.Name = "DaftarSatuanToolStripMenuItem"
+        Me.DaftarSatuanToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.DaftarSatuanToolStripMenuItem.Text = "Daftar Satuan"
         '
         'MenuAksi
         '
@@ -370,6 +382,7 @@ Partial Class Fpembelian_produk
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Fpembelian_produk"
@@ -416,4 +429,6 @@ Partial Class Fpembelian_produk
     Friend WithEvents Thrg_jual As NumericUpDown
     Friend WithEvents Label8 As Label
     Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents DaftarProdukToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DaftarSatuanToolStripMenuItem As ToolStripMenuItem
 End Class

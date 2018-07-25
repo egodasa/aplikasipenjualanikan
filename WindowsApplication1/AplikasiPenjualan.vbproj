@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -133,6 +133,12 @@
     <Compile Include="Fdaftar_pembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Flogin.Designer.vb">
+      <DependentUpon>Flogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Flogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Fmenu.Designer.vb">
       <DependentUpon>Fmenu.vb</DependentUpon>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fdaftar_pembelian.resx">
       <DependentUpon>Fdaftar_pembelian.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flogin.resx">
+      <DependentUpon>Flogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fmenu.resx">
       <DependentUpon>Fmenu.vb</DependentUpon>
@@ -295,6 +304,7 @@
     <Content Include="assets\pemasok.png" />
     <Content Include="assets\pembelian.png" />
     <Content Include="assets\penjualan.png" />
+    <Content Include="assets\person.png" />
     <Content Include="assets\produk.png" />
     <Content Include="assets\supplier.png" />
     <Content Include="database\dblaporan_penjualanv2.sql">

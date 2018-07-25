@@ -2,27 +2,32 @@
     Dim produk As New SqlHelper.DataQuery
     Dim current_id As Integer
     Private Sub SetFormData()
-        produk.formData = New List(Of SqlHelper.Query) From {
-            New SqlHelper.Query("id_produk", "DEFAULT", "Id_Produk", False),
-            New SqlHelper.Query("nm_produk", SqlHelper.Query.SqlString(Tnm_produk.Text), "Nama_Produk"),
-            New SqlHelper.Query("stok", Tstok.Value.ToString(), "Stok"),
-            New SqlHelper.Query("harga_produk", Thrg_produk.Value.ToString().Replace(",", "."), "Harga_Produk"),
-            New SqlHelper.Query("id_sat_produk", Csatuan.SelectedValue.ToString, "Id_Sat_Produk"),
-            New SqlHelper.Query(Nothing, Nothing, "Satuan", False)
+        produk.formData = New List(Of SqlHelper.SqlManipulation) From {
+            New SqlHelper.SqlManipulation("nm_produk", SqlHelper.Query.SqlString(Tnm_produk.Text)),
+            New SqlHelper.SqlManipulation("stok", Tstok.Value.ToString()),
+            New SqlHelper.SqlManipulation("harga_produk", Thrg_produk.Value.ToString().Replace(",", ".")),
+            New SqlHelper.SqlManipulation("id_sat_produk", Csatuan.SelectedValue.ToString)
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Call SetKoneksi()
-        Call fetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
+        Call FetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
         produk.table = "tbl_produk"
         produk.view = "daftar_produk"
         produk.primary_key = "id_produk"
         produk.primary_key_caption = "Id_Produk"
-        DGproduk.DataSource = fetchData(produk.SelectAll())
+        produk.viewData = New List(Of SqlHelper.SqlView) From {
+            New SqlHelper.SqlView("id_produk", "Id_Produk"),
+            New SqlHelper.SqlView("nm_produk", "Nama_Produk"),
+            New SqlHelper.SqlView("stok", "Stok"),
+            New SqlHelper.SqlView("harga_produk", "Harga_Produk"),
+            New SqlHelper.SqlView("id_sat_produk", "Id_Sat_Produk"),
+            New SqlHelper.SqlView(Nothing, "Satuan")
+            }
+        DGproduk.DataSource = FetchData(produk.SelectAll())
         DGproduk.Columns("Id_Produk").Visible = False
         DGproduk.Columns("Id_Sat_Produk").Visible = False
         DGproduk.Columns(produk.primary_key_caption).Visible = False
-        SetFormData()
         Bcancel.PerformClick()
     End Sub
 
@@ -38,15 +43,24 @@
     End Sub
     Private Sub CloseForm(sender As Object, e As EventArgs) Handles Bexit.Click
         If MessageBox.Show("Apakah Anda yakin ingin KELUAR?", "Peringatan!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            main_form.Show()
+            If Fpenjualan_produk.Visible = True Then
+                FetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Fpenjualan_produk.Cproduk, "Nama_Produk", "Id_Produk")
+            Else
+                main_form.Show()
+            End If
+            If Fpembelian_produk.Visible = True Then
+                FetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Fpembelian_produk.Cproduk, "Nama_Produk", "Id_Produk")
+            Else
+                main_form.Show()
+            End If
             Me.Close()
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
         SetFormData()
-        runQuery(produk.Insert())
+        RunQuery(produk.Insert())
         Call successMessage()
-        DGproduk.DataSource = fetchData(produk.SelectAll())
+        DGproduk.DataSource = FetchData(produk.SelectAll())
         Bcancel.PerformClick()
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
@@ -59,24 +73,24 @@
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
-            runQuery(produk.Delete(DGproduk.Rows(x).Cells(0).Value))
-            DGproduk.DataSource = fetchData(produk.SelectAll())
+            RunQuery(produk.Delete(DGproduk.Rows(x).Cells(0).Value))
+            DGproduk.DataSource = FetchData(produk.SelectAll())
             Bcancel.PerformClick()
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
         SetFormData()
-        runQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
+        RunQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGproduk.DataSource = fetchData(produk.SelectAll())
+        DGproduk.DataSource = FetchData(produk.SelectAll())
     End Sub
 
     Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
         If Tcari.Text.Length <> 0 Then
-            DGproduk.DataSource = fetchData("select * from daftar_produk where `Nama_Produk` like '%" & Tcari.Text & "%'")
+            DGproduk.DataSource = FetchData("select * from daftar_produk where `Nama_Produk` like '%" & Tcari.Text & "%'")
         Else
-            DGproduk.DataSource = fetchData(produk.SelectAll())
+            DGproduk.DataSource = FetchData(produk.SelectAll())
         End If
     End Sub
 
@@ -95,5 +109,9 @@
     End Sub
     Private Sub Mhapus_Click(sender As Object, e As EventArgs) Handles Mhapus.Click
         DeleteData(current_id)
+    End Sub
+
+    Private Sub DaftarSatuanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DaftarSatuanToolStripMenuItem.Click
+        Fsatuan.ShowDialog()
     End Sub
 End Class

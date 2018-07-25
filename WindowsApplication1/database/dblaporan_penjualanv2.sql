@@ -86,6 +86,18 @@ CREATE TABLE `tbl_transaksi` (
   PRIMARY KEY (`id_transaksi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `tbl_pengguna`;
+CREATE TABLE `tbl_pengguna` (
+  `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(15) NOT NULL,
+  `password` text NOT NULL,
+  `nm_lengkap` varchar(100) NOT NULL,
+  `jenis` enum('Admin','Karyawan','Pemilik') NOT NULL,
+  PRIMARY KEY (`id_pengguna`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tbl_pengguna` (`username`,`password`,`nm_lengkap`,`jenis`) VALUES ('admin',md5('admin'),'admin','Admin');
+
 DROP VIEW IF EXISTS `daftar_satuan`;
 CREATE VIEW `daftar_satuan` AS select `a`.`id_sat` AS `Id_Sat`,`a`.`nm_sat` AS `Nama_Satuan` from `tbl_satuan` `a`;
 

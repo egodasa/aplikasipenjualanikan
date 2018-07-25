@@ -33,25 +33,26 @@ Module helper
                 kon.Open()
             Catch ex As Exception
                 MsgBox("Tidak dapat terhubung kedatabase" & vbCrLf & "Pesan error : " & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Error")
-                main_form.Close()
+                End
             End Try
         Else
             MsgBox("Tidak dapat terhubung kedatabase.", MsgBoxStyle.Critical, "Error")
         End If
     End Sub
-    Function fetchData(ByVal q As String)
+    Function FetchData(ByVal q As String)
         Call SetKoneksi()
         Try
             da = New MySqlDataAdapter(q, kon)
             ds = New DataSet
             da.Fill(ds)
+            kon.Close()
             Return ds.Tables(0)
         Catch ex As Exception
             MsgBox("Terdapat kesalahan pada eksekusi SQL." & vbCrLf & "Pesan error : " & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Kesalahan")
             Return New DataSet
         End Try
     End Function
-    Sub runQuery(ByVal q As String)
+    Sub RunQuery(ByVal q As String)
         Call SetKoneksi()
         Try
             cmd = New MySqlCommand(q, kon)
@@ -61,6 +62,27 @@ Module helper
             cmd.ExecuteNonQuery()
         Catch ex As Exception
             MsgBox("Terdapat kesalahan pada eksekusi SQL." & vbCrLf & "Pesan error : " & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Kesalahan")
+            End
+        Finally
+            kon.Close()
+        End Try
+    End Sub
+    Sub RunQueryAsync(ByVal q As String)
+        Call SetKoneksi()
+        Dim rowsAffected As Int32
+        Try
+            cmd = New MySqlCommand(q, kon)
+            cmd.Connection = kon
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = q
+            Dim myResult As IAsyncResult = cmd.BeginExecuteNonQuery(Nothing, Nothing)
+            rowsAffected = cmd.EndExecuteNonQuery(myResult)
+            kon.Close()
+        Catch ex As Exception
+            MsgBox("Terdapat kesalahan pada eksekusi SQL." & vbCrLf & "Pesan error : " & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Kesalahan")
+            End
+        Finally
+            kon.Close()
         End Try
     End Sub
     Sub successMessage()
@@ -69,8 +91,8 @@ Module helper
     Sub editMessage()
         MessageBox.Show("Data berhasil diubah", "Pesan", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
-    Sub fetchComboboxData(ByVal sql As String, ByVal name As ComboBox, ByVal caption As String, ByVal value As String)
-        name.DataSource = fetchData(sql)
+    Sub FetchComboboxData(ByVal sql As String, ByVal name As ComboBox, ByVal caption As String, ByVal value As String)
+        name.DataSource = FetchData(sql)
         name.ValueMember = value
         name.DisplayMember = caption
         name.ResetText()

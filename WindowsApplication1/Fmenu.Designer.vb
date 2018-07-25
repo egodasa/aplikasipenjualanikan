@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Fmenu
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Fmenu
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Fmenu))
         Me.Button1 = New System.Windows.Forms.Button()
@@ -30,7 +30,6 @@ Partial Class Fmenu
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -134,25 +133,12 @@ Partial Class Fmenu
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "CV. RIKO PUTRA"
         '
-        'Button7
-        '
-        Me.Button7.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.PowderBlue
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Location = New System.Drawing.Point(377, 23)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 12
-        Me.Button7.UseVisualStyleBackColor = False
-        '
         'Fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PaleTurquoise
         Me.ClientSize = New System.Drawing.Size(559, 405)
-        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -160,6 +146,7 @@ Partial Class Fmenu
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fmenu"
         Me.Text = "MENU"
@@ -175,5 +162,4 @@ Partial Class Fmenu
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button7 As Button
 End Class

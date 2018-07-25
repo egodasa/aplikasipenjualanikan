@@ -4,6 +4,7 @@
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Flogin.Show()
         Me.Close()
     End Sub
 
@@ -27,7 +28,7 @@
         Me.Hide()
     End Sub
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) 
         Fpengaturan.Show()
         Me.Hide()
     End Sub

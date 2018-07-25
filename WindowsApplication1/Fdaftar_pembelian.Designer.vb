@@ -135,6 +135,7 @@ Partial Class Fdaftar_pembelian
         Me.ClientSize = New System.Drawing.Size(1042, 398)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fdaftar_pembelian"
         Me.Text = "Daftar Pembelian"
