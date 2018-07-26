@@ -1,7 +1,4 @@
 ﻿Public Class Fmenu
-    Private Sub Fmenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Flogin.Show()
@@ -31,5 +28,20 @@
     Private Sub Button7_Click(sender As Object, e As EventArgs) 
         Fpengaturan.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+        Fpengguna.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Fsatuan.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Flaporan.Show()
+        main_form.Hide()
     End Sub
 End Class

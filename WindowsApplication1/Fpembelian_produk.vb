@@ -4,6 +4,11 @@
     Dim current_id As Integer
     Dim detail_pembelian As New SqlHelper.DataQuery
     Private Sub LoadForm(sender As Object, e As EventArgs) Handles MyBase.Load
+        If jenis_pengguna <> "Admin" Then
+            MenuStrip1.Visible = False
+        Else
+            MenuStrip1.Visible = True
+        End If
         SetTransactionValue()
         detail_pembelian.table = "tbl_detail_pembelian"
         detail_pembelian.view = "laporan_detail_pembelian"

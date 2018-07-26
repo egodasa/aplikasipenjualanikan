@@ -6,11 +6,14 @@ Public Class Flogin
             jenis_pengguna = data_pengguna.Rows(0).Item("jenis")
             Tusername.Clear()
             Tpassword.Clear()
-            If data_pengguna.Rows(0).Item("jenis") = "Admin" Or data_pengguna.Rows(0).Item("jenis") = "Karyawan" Then
-                main_form.Show()
+            If data_pengguna.Rows(0).Item("jenis") = "Admin" Then
+                main_form = Fmenu
+            ElseIf data_pengguna.Rows(0).Item("jenis") = "Karyawan" Then
+                main_form = Fmenu_karyawan
             Else
-                main_form.Show()
+                main_form = Flaporan
             End If
+            main_form.Show()
             Me.Hide()
         Else
             MessageBox.Show("Username atau password salah!", "Pesan", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)

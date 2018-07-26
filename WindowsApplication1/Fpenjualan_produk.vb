@@ -4,6 +4,11 @@
     Dim current_id As Integer
     Dim detail_transaksi As New SqlHelper.DataQuery
     Private Sub LoadForm(sender As Object, e As EventArgs) Handles MyBase.Load
+        If jenis_pengguna <> "Admin" Then
+            MenuStrip1.Visible = False
+        Else
+            MenuStrip1.Visible = True
+        End If
         SetTransactionValue()
         detail_transaksi.table = "tbl_detail_transaksi"
         detail_transaksi.view = "laporan_detail_transaksi"

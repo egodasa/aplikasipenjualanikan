@@ -30,6 +30,8 @@ Partial Class Fmenu
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -38,7 +40,7 @@ Partial Class Fmenu
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(12, 298)
+        Me.Button1.Location = New System.Drawing.Point(578, 139)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(231, 96)
         Me.Button1.TabIndex = 5
@@ -53,7 +55,7 @@ Partial Class Fmenu
         Me.Button2.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(312, 94)
+        Me.Button2.Location = New System.Drawing.Point(299, 139)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(231, 96)
         Me.Button2.TabIndex = 6
@@ -68,7 +70,7 @@ Partial Class Fmenu
         Me.Button3.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(312, 196)
+        Me.Button3.Location = New System.Drawing.Point(578, 12)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(231, 96)
         Me.Button3.TabIndex = 7
@@ -83,7 +85,7 @@ Partial Class Fmenu
         Me.Button4.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(12, 196)
+        Me.Button4.Location = New System.Drawing.Point(299, 12)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(231, 96)
         Me.Button4.TabIndex = 8
@@ -98,7 +100,7 @@ Partial Class Fmenu
         Me.Button5.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
         Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(12, 94)
+        Me.Button5.Location = New System.Drawing.Point(12, 139)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(231, 96)
         Me.Button5.TabIndex = 9
@@ -113,7 +115,7 @@ Partial Class Fmenu
         Me.Button6.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(312, 298)
+        Me.Button6.Location = New System.Drawing.Point(578, 261)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(231, 96)
         Me.Button6.TabIndex = 10
@@ -125,20 +127,53 @@ Partial Class Fmenu
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Sitka Display", 24.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(184, 15)
+        Me.Label1.Location = New System.Drawing.Point(12, 33)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(187, 31)
+        Me.Label1.Size = New System.Drawing.Size(247, 47)
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "CV. RIKO PUTRA"
+        '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.MintCream
+        Me.Button7.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
+        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button7.Location = New System.Drawing.Point(299, 261)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(231, 96)
+        Me.Button7.TabIndex = 12
+        Me.Button7.Text = "Pengguna"
+        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button7.UseVisualStyleBackColor = False
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.MintCream
+        Me.Button8.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
+        Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button8.Location = New System.Drawing.Point(12, 258)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(231, 96)
+        Me.Button8.TabIndex = 13
+        Me.Button8.Text = "Satuan"
+        Me.Button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button8.UseVisualStyleBackColor = False
         '
         'Fmenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.ClientSize = New System.Drawing.Size(559, 405)
+        Me.ClientSize = New System.Drawing.Size(820, 366)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -146,10 +181,10 @@ Partial Class Fmenu
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fmenu"
-        Me.Text = "MENU"
+        Me.Text = "Menu Admin"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -162,4 +197,6 @@ Partial Class Fmenu
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Button8 As Button
 End Class

@@ -10,6 +10,11 @@
             }
     End Sub
     Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If jenis_pengguna <> "Admin" Then
+            MenuStrip1.Visible = False
+        Else
+            MenuStrip1.Visible = True
+        End If
         Call SetKoneksi()
         Call FetchComboboxData("select * from daftar_satuan", Csatuan, "Nama_Satuan", "Id_Sat")
         produk.table = "tbl_produk"

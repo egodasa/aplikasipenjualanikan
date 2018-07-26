@@ -8,16 +8,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{54E52264-F716-4290-940D-1E15954EC0DF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
-    <RootNamespace>WindowsApplication1</RootNamespace>
-    <AssemblyName>WindowsApplication1</AssemblyName>
+    <StartupObject>LaporanPenjualan.My.MyApplication</StartupObject>
+    <RootNamespace>LaporanPenjualan</RootNamespace>
+    <AssemblyName>LaporanPenjualan</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\mandan\Documents\Visual Studio 2010\</PublishUrl>
+    <PublishUrl>D:\Program\visual_basic\LaporanPenjualan\build\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -40,7 +40,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>WindowsApplication1.xml</DocumentationFile>
+    <DocumentationFile>LaporanPenjualan.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -51,7 +51,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>WindowsApplication1.xml</DocumentationFile>
+    <DocumentationFile>LaporanPenjualan.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -133,6 +133,12 @@
     <Compile Include="Fdaftar_pembelian.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Flaporan.Designer.vb">
+      <DependentUpon>Flaporan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Flaporan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Flogin.Designer.vb">
       <DependentUpon>Flogin.vb</DependentUpon>
     </Compile>
@@ -143,6 +149,12 @@
       <DependentUpon>Fmenu.vb</DependentUpon>
     </Compile>
     <Compile Include="Fmenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fmenu_karyawan.Designer.vb">
+      <DependentUpon>Fmenu_karyawan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fmenu_karyawan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fpemasok.Designer.vb">
@@ -161,6 +173,12 @@
       <DependentUpon>Fpengaturan.vb</DependentUpon>
     </Compile>
     <Compile Include="Fpengaturan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fpengguna.Designer.vb">
+      <DependentUpon>Fpengguna.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fpengguna.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fpenjualan_produk.Designer.vb">
@@ -211,11 +229,17 @@
     <EmbeddedResource Include="Fdaftar_pembelian.resx">
       <DependentUpon>Fdaftar_pembelian.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flaporan.resx">
+      <DependentUpon>Flaporan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Flogin.resx">
       <DependentUpon>Flogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fmenu.resx">
       <DependentUpon>Fmenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fmenu_karyawan.resx">
+      <DependentUpon>Fmenu_karyawan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fpemasok.resx">
       <DependentUpon>Fpemasok.vb</DependentUpon>
@@ -225,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fpengaturan.resx">
       <DependentUpon>Fpengaturan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fpengguna.resx">
+      <DependentUpon>Fpengguna.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fpenjualan_produk.resx">
       <DependentUpon>Fpenjualan_produk.vb</DependentUpon>
@@ -293,18 +320,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\edit-solid.png" />
+    <Content Include="assets\icons8-account-96.png" />
     <Content Include="assets\icons8-close-window-96.png" />
     <Content Include="assets\icons8-edit-file-96.png" />
+    <Content Include="assets\icons8-print-48.png" />
     <Content Include="assets\icons8-save-all-96.png" />
+    <Content Include="assets\icons8-scale-96.png" />
+    <Content Include="assets\icons8-sell-stock-96.png" />
     <Content Include="assets\icons8-shutdown-96.png" />
     <Content Include="assets\icons8-supplier-96.png" />
+    <Content Include="assets\icons8-user-96.png" />
     <Content Include="assets\if_cross-24_103181.png" />
     <Content Include="assets\laporan_c9wLWA.ico" />
     <Content Include="assets\loading.gif" />
     <Content Include="assets\pemasok.png" />
     <Content Include="assets\pembelian.png" />
     <Content Include="assets\penjualan.png" />
-    <Content Include="assets\person.png" />
     <Content Include="assets\produk.png" />
     <Content Include="assets\supplier.png" />
     <Content Include="database\dblaporan_penjualanv2.sql">

@@ -38,10 +38,10 @@ Partial Class Fpengaturan
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Tnm = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ProgressMysql = New System.Windows.Forms.ProgressBar()
         Me.Bexit = New System.Windows.Forms.Button()
         Me.MysqlWorker = New System.ComponentModel.BackgroundWorker()
-        Me.ProgressMysql = New System.Windows.Forms.ProgressBar()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
@@ -187,6 +187,25 @@ Partial Class Fpengaturan
         Me.Tnm.Size = New System.Drawing.Size(277, 20)
         Me.Tnm.TabIndex = 4
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(102, 55)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(249, 16)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Sedang Membuat Database Baru..."
+        Me.Label5.Visible = False
+        '
+        'ProgressMysql
+        '
+        Me.ProgressMysql.Location = New System.Drawing.Point(25, 26)
+        Me.ProgressMysql.Name = "ProgressMysql"
+        Me.ProgressMysql.Size = New System.Drawing.Size(397, 23)
+        Me.ProgressMysql.TabIndex = 12
+        Me.ProgressMysql.Visible = False
+        '
         'Bexit
         '
         Me.Bexit.BackColor = System.Drawing.Color.Gray
@@ -205,25 +224,6 @@ Partial Class Fpengaturan
         '
         Me.MysqlWorker.WorkerReportsProgress = True
         '
-        'ProgressMysql
-        '
-        Me.ProgressMysql.Location = New System.Drawing.Point(25, 26)
-        Me.ProgressMysql.Name = "ProgressMysql"
-        Me.ProgressMysql.Size = New System.Drawing.Size(397, 23)
-        Me.ProgressMysql.TabIndex = 12
-        Me.ProgressMysql.Visible = False
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(102, 55)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(249, 16)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Sedang Membuat Database Baru..."
-        Me.Label5.Visible = False
-        '
         'Fpengaturan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -233,7 +233,7 @@ Partial Class Fpengaturan
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Bexit)
         Me.Controls.Add(Me.GroupBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fpengaturan"
         Me.Text = "Pengaturan"

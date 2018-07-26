@@ -52,7 +52,12 @@
             Call FetchComboboxData("select * from daftar_satuan", Fpembelian_produk.Csatuan, "Nama_Satuan", "Id_Sat")
         End If
         If MessageBox.Show("Apakah Anda yakin ingin KELUAR?", "Peringatan!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) = DialogResult.Yes Then
-            Me.Close()
+            If Fkelola_produk.Visible = True Or Fpembelian_produk.Visible = True Then
+                Me.Close()
+            Else
+                main_form.Show()
+                Me.Close()
+            End If
         End If
     End Sub
     Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click

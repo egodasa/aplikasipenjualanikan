@@ -250,7 +250,7 @@ Partial Class Fpemasok
         Me.ClientSize = New System.Drawing.Size(713, 284)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Fpemasok"
         Me.Text = "Kelola Data Pemasok"

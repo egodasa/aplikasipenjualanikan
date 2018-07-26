@@ -97,6 +97,8 @@ CREATE TABLE `tbl_pengguna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `tbl_pengguna` (`username`,`password`,`nm_lengkap`,`jenis`) VALUES ('admin',md5('admin'),'admin','Admin');
+INSERT INTO `tbl_pengguna` (`username`,`password`,`nm_lengkap`,`jenis`) VALUES ('pemilik',md5('pemilik'),'pemilik','Pemilik');
+INSERT INTO `tbl_pengguna` (`username`,`password`,`nm_lengkap`,`jenis`) VALUES ('karyawan',md5('karyawan'),'karyawan','Karyawan');
 
 DROP VIEW IF EXISTS `daftar_satuan`;
 CREATE VIEW `daftar_satuan` AS select `a`.`id_sat` AS `Id_Sat`,`a`.`nm_sat` AS `Nama_Satuan` from `tbl_satuan` `a`;
