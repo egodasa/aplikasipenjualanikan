@@ -64,7 +64,6 @@
     End Sub
 
     Private Sub MysqlWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles MysqlWorker.DoWork
-
         RunQueryAsync("DROP DATABASE IF EXISTS " & Tnm.Text & "; CREATE DATABASE " & Tnm.Text & "; USE " & Tnm.Text & ";" & IO.File.OpenText("database/dblaporan_penjualanv2.sql").ReadToEnd())
     End Sub
 

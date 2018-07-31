@@ -89,6 +89,7 @@
         Call successMessage()
         SetTransactionValue()
         ResetForm()
+        Ttotal_bayar.ResetText()
         DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
     End Sub
 

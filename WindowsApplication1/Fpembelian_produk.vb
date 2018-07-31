@@ -111,6 +111,7 @@
         Call successMessage()
         SetTransactionValue()
         ResetForm()
+        Ttotal_bayar.ResetText()
         DGproduk.DataSource = FetchData(detail_pembelian.SelectAll("id_pembelian", "=", id_pembelian))
     End Sub
 

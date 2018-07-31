@@ -139,6 +139,12 @@
     <Compile Include="Flaporan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Flaporan1.Designer.vb">
+      <DependentUpon>Flaporan1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Flaporan1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Flogin.Designer.vb">
       <DependentUpon>Flogin.vb</DependentUpon>
     </Compile>
@@ -187,6 +193,12 @@
     <Compile Include="Fpenjualan_produk.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FRlaporan.Designer.vb">
+      <DependentUpon>FRlaporan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FRlaporan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Helper.vb" />
     <Compile Include="Fsatuan.Designer.vb">
       <DependentUpon>Fsatuan.vb</DependentUpon>
@@ -199,6 +211,34 @@
     </Compile>
     <Compile Include="Fproduk.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="laporan\LabaRugi.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabaRugi.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="laporan\Pembelian.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pembelian.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="laporan\Penjualan.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Penjualan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="laporan\Produk.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Produk.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -232,6 +272,9 @@
     <EmbeddedResource Include="Flaporan.resx">
       <DependentUpon>Flaporan.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Flaporan1.resx">
+      <DependentUpon>Flaporan1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Flogin.resx">
       <DependentUpon>Flogin.vb</DependentUpon>
     </EmbeddedResource>
@@ -256,11 +299,34 @@
     <EmbeddedResource Include="Fpenjualan_produk.resx">
       <DependentUpon>Fpenjualan_produk.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRlaporan.resx">
+      <DependentUpon>FRlaporan.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fsatuan.resx">
       <DependentUpon>Fsatuan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fproduk.resx">
       <DependentUpon>Fproduk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laporan\LabaRugi.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LabaRugi.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laporan\Pembelian.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pembelian.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laporan\Penjualan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Penjualan.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laporan\Produk.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Produk.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -315,9 +381,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="laporan\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="assets\edit-solid.png" />
     <Content Include="assets\icons8-account-96.png" />
