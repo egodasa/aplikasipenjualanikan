@@ -1,34 +1,35 @@
-﻿Public Class Fpemasok
-    Dim pemasok As New SqlHelper.DataQuery
+﻿Imports SqlHelper
+Public Class Fpemasok
+    Dim pemasok As New DataQuery
     Dim current_id As Integer
     Private Function FormValidation()
         Return Tnm_pemasok.TextLength <> 0
     End Function
     Private Sub SetFormData()
-        pemasok.formData = New List(Of SqlHelper.SqlManipulation) From {
-            New SqlHelper.SqlManipulation("nm_pemasok", SqlHelper.Query.SqlString(Tnm_pemasok.Text)),
-            New SqlHelper.SqlManipulation("no_telpon", SqlHelper.Query.SqlString(Ttelp.Text)),
-            New SqlHelper.SqlManipulation("alamat", SqlHelper.Query.SqlString(Talamat.Text))
+        pemasok.formData = New List(Of SqlManipulation) From {
+            New SqlManipulation("nm_pemasok", Query.SqlString(Tnm_pemasok.Text)),
+            New SqlManipulation("no_telpon", Query.SqlString(Ttelp.Text)),
+            New SqlManipulation("alamat", Query.SqlString(Talamat.Text))
             }
     End Sub
-    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         Call SetKoneksi()
         pemasok.table = "tbl_pemasok"
         pemasok.view = "laporan_pemasok"
         pemasok.primary_key = "id_pemasok"
         pemasok.primary_key_caption = "id_pemasok"
-        pemasok.viewData = New List(Of SqlHelper.SqlView) From {
-            New SqlHelper.SqlView("id_pemasok", "id_pemasok"),
-            New SqlHelper.SqlView("nm_pemasok", "Nama_Pemasok"),
-            New SqlHelper.SqlView("no_telpon", "Nomor_Telepon"),
-            New SqlHelper.SqlView("alamat", "Alamat")
+        pemasok.viewData = New List(Of SqlView) From {
+            New SqlView("id_pemasok", "id_pemasok"),
+            New SqlView("nm_pemasok", "Nama_Pemasok"),
+            New SqlView("no_telpon", "Nomor_Telepon"),
+            New SqlView("alamat", "Alamat")
             }
         DGpemasok.DataSource = FetchData(pemasok.SelectAll())
         DGpemasok.Columns(pemasok.primary_key_caption).Visible = False
         Bcancel.PerformClick()
     End Sub
 
-    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
+    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As EventArgs) Handles Bcancel.Click
         Bedit.Enabled = False
         Bsave.Enabled = True
         Tnm_pemasok.Focus()
@@ -43,7 +44,7 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
             RunQuery(pemasok.Insert())
             Call successMessage()
@@ -66,7 +67,7 @@
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
             RunQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
             Call editMessage()
@@ -75,7 +76,7 @@
         End If
     End Sub
 
-    Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
+    Private Sub FindData(ByVal sender As System.Object, ByVal e As EventArgs) Handles Tcari.TextChanged
         If Tcari.Text.Length <> 0 Then
             DGpemasok.DataSource = FetchData("select * from daftar_pemasok where `Nama_Pemasok` like '%" & Tcari.Text & "%'")
         Else

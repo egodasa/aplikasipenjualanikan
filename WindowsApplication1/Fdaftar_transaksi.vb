@@ -1,6 +1,6 @@
 ﻿Public Class Fdaftar_transaksi
 
-    Private Sub Fdaftar_transaksi_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Fdaftar_transaksi_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         DGtransaksi.DataSource = FetchData("select * from daftar_transaksi")
     End Sub
 
@@ -23,7 +23,7 @@
         End If
     End Sub
 
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
 End Class

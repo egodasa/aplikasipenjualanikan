@@ -1,18 +1,19 @@
-﻿Public Class Fkelola_produk
-    Dim produk As New SqlHelper.DataQuery
+﻿Imports SqlHelper
+Public Class Fkelola_produk
+    Dim produk As New DataQuery
     Dim current_id As Integer
     Private Function FormValidation()
         Return Thrg_produk.Value <> 0 And Tnm_produk.TextLength <> 0 And Csatuan.Text.Length <> 0 And Tstok.Value <> 0
     End Function
     Private Sub SetFormData()
-        produk.formData = New List(Of SqlHelper.SqlManipulation) From {
-            New SqlHelper.SqlManipulation("nm_produk", SqlHelper.Query.SqlString(Tnm_produk.Text)),
-            New SqlHelper.SqlManipulation("stok", Tstok.Value.ToString()),
-            New SqlHelper.SqlManipulation("harga_produk", Thrg_produk.Value.ToString().Replace(",", ".")),
-            New SqlHelper.SqlManipulation("id_sat_produk", Csatuan.SelectedValue.ToString)
+        produk.formData = New List(Of SqlManipulation) From {
+            New SqlManipulation("nm_produk", Query.SqlString(Tnm_produk.Text)),
+            New SqlManipulation("stok", Tstok.Value.ToString()),
+            New SqlManipulation("harga_produk", Thrg_produk.Value.ToString().Replace(",", ".")),
+            New SqlManipulation("id_sat_produk", Csatuan.SelectedValue.ToString)
             }
     End Sub
-    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         If jenis_pengguna <> "Admin" Then
             MenuStrip1.Visible = False
         Else
@@ -24,13 +25,13 @@
         produk.view = "daftar_produk"
         produk.primary_key = "id_produk"
         produk.primary_key_caption = "Id_Produk"
-        produk.viewData = New List(Of SqlHelper.SqlView) From {
-            New SqlHelper.SqlView("id_produk", "Id_Produk"),
-            New SqlHelper.SqlView("nm_produk", "Nama_Produk"),
-            New SqlHelper.SqlView("stok", "Stok"),
-            New SqlHelper.SqlView("harga_produk", "Harga_Produk"),
-            New SqlHelper.SqlView("id_sat_produk", "Id_Sat_Produk"),
-            New SqlHelper.SqlView(Nothing, "Satuan")
+        produk.viewData = New List(Of SqlView) From {
+            New SqlView("id_produk", "Id_Produk"),
+            New SqlView("nm_produk", "Nama_Produk"),
+            New SqlView("stok", "Stok"),
+            New SqlView("harga_produk", "Harga_Produk"),
+            New SqlView("id_sat_produk", "Id_Sat_Produk"),
+            New SqlView(Nothing, "Satuan")
             }
         DGproduk.DataSource = FetchData(produk.SelectAll())
         DGproduk.Columns("Id_Produk").Visible = False
@@ -39,7 +40,7 @@
         Bcancel.PerformClick()
     End Sub
 
-    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
+    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As EventArgs) Handles Bcancel.Click
         Bedit.Enabled = False
         Bsave.Enabled = True
         Tnm_produk.Focus()
@@ -52,12 +53,12 @@
     Private Sub CloseForm(sender As Object, e As EventArgs) Handles Bexit.Click
         If MessageBox.Show("Apakah Anda yakin ingin KELUAR?", "Peringatan!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) = DialogResult.Yes Then
             If Fpenjualan_produk.Visible = True Then
-                FetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Fpenjualan_produk.Cproduk, "Nama_Produk", "Id_Produk")
+                FetchComboboxData(Query.SelectAll("daftar_produk"), Fpenjualan_produk.Cproduk, "Nama_Produk", "Id_Produk")
             Else
                 main_form.Show()
             End If
             If Fpembelian_produk.Visible = True Then
-                FetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Fpembelian_produk.Cproduk, "Nama_Produk", "Id_Produk")
+                FetchComboboxData(Query.SelectAll("daftar_produk"), Fpembelian_produk.Cproduk, "Nama_Produk", "Id_Produk")
             Else
                 main_form.Show()
             End If
@@ -65,11 +66,11 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
-        RunQuery(produk.Insert())
-        Call successMessage()
-        DGproduk.DataSource = FetchData(produk.SelectAll())
+            RunQuery(produk.Insert())
+            Call successMessage()
+            DGproduk.DataSource = FetchData(produk.SelectAll())
             Bcancel.PerformClick()
         End If
     End Sub
@@ -89,16 +90,16 @@
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
-        RunQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
-        Call editMessage()
-        Bcancel.PerformClick()
+            RunQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
+            Call editMessage()
+            Bcancel.PerformClick()
             DGproduk.DataSource = FetchData(produk.SelectAll())
         End If
     End Sub
 
-    Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged
+    Private Sub FindData(ByVal sender As System.Object, ByVal e As EventArgs) Handles Tcari.TextChanged
         If Tcari.Text.Length <> 0 Then
             DGproduk.DataSource = FetchData("select * from daftar_produk where `Nama_Produk` like '%" & Tcari.Text & "%'")
         Else

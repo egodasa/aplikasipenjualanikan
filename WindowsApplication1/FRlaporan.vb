@@ -1,10 +1,8 @@
-﻿Imports System.Windows.Forms
-Imports CrystalDecisions.CrystalReports.Engine
-Imports CrystalDecisions.Shared
+﻿Imports CrystalDecisions.CrystalReports.Engine
 Public Class FRlaporan
     Dim CR As New ReportDocument()
     Public tipe_laporan As String
-    Private Sub FRlaporan_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub FRlaporan_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         If tipe_laporan = "penjualan" Then
             CR.Load("laporan/Penjualan.rpt")
             CRlaporan.SelectionFormula = "{tbl_transaksi1.tgl_transaksi} in Date(" & Flaporan.penjualan_awal.Value.ToString("yyyy,M,d") & ") to Date(" & Flaporan.penjualan_akhir.Value.ToString("yyyy,M,d") & ")"

@@ -1,6 +1,6 @@
 ﻿Public Class Fdaftar_pembelian
 
-    Private Sub Fdatar_pembelian_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Fdatar_pembelian_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         DGtransaksi.DataSource = FetchData("select * from daftar_pembelian")
     End Sub
 

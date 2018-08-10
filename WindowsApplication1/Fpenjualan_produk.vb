@@ -1,8 +1,9 @@
-﻿Public Class Fpenjualan_produk
+﻿Imports SqlHelper
+Public Class Fpenjualan_produk
     Dim id_transaksi As String
     Dim tgl_transaksi As String
     Dim current_id As Integer
-    Dim detail_transaksi As New SqlHelper.DataQuery
+    Dim detail_transaksi As New DataQuery
     Private Function FormValidation()
         Return Cproduk.Text.Length <> 0 And Tjumlah.Value <> 0 And Tharga_jual.Value <> 0 And Charga_jual.Text.Length <> 0
     End Function
@@ -17,32 +18,32 @@
         detail_transaksi.view = "laporan_detail_transaksi"
         detail_transaksi.primary_key = "Id_dtransaksi"
         detail_transaksi.primary_key_caption = "Id_dtransaksi"
-        detail_transaksi.viewData = New List(Of SqlHelper.SqlView) From {
-        New SqlHelper.SqlView("id_produk", "id_Produk"),
-        New SqlHelper.SqlView("id_dpembelian", "id_dpembelian"),
-        New SqlHelper.SqlView("id_dtransaksi", "id_dtransaksi"),
-        New SqlHelper.SqlView("id_transaksi", "id_transaksi"),
-        New SqlHelper.SqlView(Nothing, "Nama_Produk"),
-        New SqlHelper.SqlView("jumlah", "Jumlah"),
-        New SqlHelper.SqlView("harga_jual", "Harga_Jual"),
-        New SqlHelper.SqlView(Nothing, "Total_Harga"),
-        New SqlHelper.SqlView(Nothing, "Satuan"),
-        New SqlHelper.SqlView(Nothing, "Harga_Jual")
+        detail_transaksi.viewData = New List(Of SqlView) From {
+        New SqlView("id_produk", "id_Produk"),
+        New SqlView("id_dpembelian", "id_dpembelian"),
+        New SqlView("id_dtransaksi", "id_dtransaksi"),
+        New SqlView("id_transaksi", "id_transaksi"),
+        New SqlView(Nothing, "Nama_Produk"),
+        New SqlView("jumlah", "Jumlah"),
+        New SqlView("harga_jual", "Harga_Jual"),
+        New SqlView(Nothing, "Total_Harga"),
+        New SqlView(Nothing, "Satuan"),
+        New SqlView(Nothing, "Harga_Jual")
         }
         DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
         DGproduk.Columns("id_Produk").Visible = False
         DGproduk.Columns("id_Transaksi").Visible = False
         DGproduk.Columns("id_dtransaksi").Visible = False
         DGproduk.Columns("id_dpembelian").Visible = False
-        FetchComboboxData(SqlHelper.Query.SelectAll("daftar_produk"), Cproduk, "Nama_Produk", "Id_Produk")
+        FetchComboboxData(Query.SelectAll("daftar_produk"), Cproduk, "Nama_Produk", "Id_Produk")
     End Sub
     Private Sub SetProductValue()
-        detail_transaksi.formData = New List(Of SqlHelper.SqlManipulation) From {
-        New SqlHelper.SqlManipulation("id_produk", Cproduk.SelectedValue),
-        New SqlHelper.SqlManipulation("id_dpembelian", Charga_jual.SelectedValue),
-        New SqlHelper.SqlManipulation("id_transaksi", id_transaksi),
-        New SqlHelper.SqlManipulation("jumlah", Tjumlah.Value),
-        New SqlHelper.SqlManipulation("harga_jual", Tharga_jual.Value)
+        detail_transaksi.formData = New List(Of SqlManipulation) From {
+        New SqlManipulation("id_produk", Cproduk.SelectedValue),
+        New SqlManipulation("id_dpembelian", Charga_jual.SelectedValue),
+        New SqlManipulation("id_transaksi", id_transaksi),
+        New SqlManipulation("jumlah", Tjumlah.Value),
+        New SqlManipulation("harga_jual", Tharga_jual.Value)
         }
     End Sub
     Private Sub SetTransactionValue()
@@ -52,11 +53,11 @@
     End Sub
 
     Private Sub AddProduk(sender As Object, e As EventArgs) Handles Badd.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetProductValue()
-        RunQuery(detail_transaksi.Insert())
-        DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
-        TotalBayar()
+            RunQuery(detail_transaksi.Insert())
+            DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
+            TotalBayar()
             ResetForm()
         End If
     End Sub
@@ -68,7 +69,7 @@
         Cproduk.Focus()
     End Sub
     Private Sub CancelAction(sender As Object, e As EventArgs) Handles Bcancel.Click
-        RunQuery(SqlHelper.Query.Delete("tbl_detail_transaksi", "id_transaksi", id_transaksi))
+        RunQuery(Query.Delete("tbl_detail_transaksi", "id_transaksi", id_transaksi))
         SetTransactionValue()
         DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
         ResetForm()
@@ -117,8 +118,8 @@
         End If
     End Sub
     Private Sub GetProductPrice(sender As Object, e As EventArgs) Handles Cproduk.SelectionChangeCommitted
-        FetchComboboxData(SqlHelper.Query.SelectAll("detail_pembelian", "id_produk", "=", Cproduk.SelectedValue.ToString), Charga_jual, "keterangan", "id_dpembelian")
-        Dim tmp As DataTable = FetchData(SqlHelper.Query.SelectAll("daftar_produk", "Id_Produk", "=", Cproduk.SelectedValue.ToString))
+        FetchComboboxData(Query.SelectAll("detail_pembelian", "id_produk", "=", Cproduk.SelectedValue.ToString), Charga_jual, "keterangan", "id_dpembelian")
+        Dim tmp As DataTable = FetchData(Query.SelectAll("daftar_produk", "Id_Produk", "=", Cproduk.SelectedValue.ToString))
         Tharga_jual.Value = tmp.Rows(0).Item("Harga_Produk")
     End Sub
     Private Sub Mhapus_Click(sender As Object, e As EventArgs) Handles Mhapus.Click

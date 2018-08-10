@@ -4,7 +4,7 @@ Imports CrystalDecisions.Shared
 Public Class Flaporan1
     Public CR As New ReportDocument()
     Public tipe_laporan As String
-    Private Sub Flaporan1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Flaporan1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         If tipe_laporan = "penjualan" Then
             CRlaporan.SelectionFormula = "{tbl_transaksi1.tgl_transaksi} in Date(" & Flaporan.penjualan_awal.Value.ToString("yyyy,M,d") & ") to Date(" & Flaporan.penjualan_akhir.Value.ToString("yyyy,M,d") & ")"
         ElseIf tipe_laporan = "pembelian" Then

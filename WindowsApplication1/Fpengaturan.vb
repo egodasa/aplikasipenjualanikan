@@ -1,4 +1,5 @@
-﻿Public Class Fpengaturan
+﻿Imports SqlHelper
+Public Class Fpengaturan
     Private Sub Fpengaturan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Tusername.Text = My.Settings.db_username
         Tpassword.Text = My.Settings.db_password
@@ -12,7 +13,7 @@
     End Sub
 
     Private Sub Bsave_Click(sender As Object, e As EventArgs) Handles Bsave.Click
-        Dim hasil As SqlHelper.SqlMessages = TestKoneksi(Tusername.Text, Tpassword.Text, Tserver.Text)
+        Dim hasil As SqlMessages = TestKoneksi(Tusername.Text, Tpassword.Text, Tserver.Text)
         If hasil.code = 0 Then
             MessageBox.Show(hasil.message & " Username atau Password tidak cocok", "Error")
         ElseIf hasil.code = 1 Then
@@ -45,7 +46,7 @@
         MessageBox.Show("Database Berhasil Dibuat!", "Pesan")
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim hasil As SqlHelper.SqlMessages = TestKoneksi(Tusername.Text, Tpassword.Text, Tserver.Text)
+        Dim hasil As SqlMessages = TestKoneksi(Tusername.Text, Tpassword.Text, Tserver.Text)
         If hasil.code <> 1 Then
             MessageBox.Show("Tidak dapat terhubung ke database. Silahkan ganti pengaturan database")
         Else

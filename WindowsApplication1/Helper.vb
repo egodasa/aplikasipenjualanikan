@@ -17,12 +17,12 @@ Module helper
             Try
                 kon.Open()
                 kon.Close()
-                Return New SqlHelper.SqlMessages(1, "Koneksi MYSQL berhasil!")
+                Return New SqlMessages(1, "Koneksi MYSQL berhasil!")
             Catch ex As Exception
-                Return New SqlHelper.SqlMessages(2, "Tidak dapat terhubung ke MYSQL " & vbCrLf & "Pesan error : " & vbCrLf & ex.Message)
+                Return New SqlMessages(2, "Tidak dapat terhubung ke MYSQL " & vbCrLf & "Pesan error : " & vbCrLf & ex.Message)
             End Try
         Else
-            Return New SqlHelper.SqlMessages(0, "Tidak dapat terhubung ke MYSQL. Pastikan MYSQL sudah dihidupkan.")
+            Return New SqlMessages(0, "Tidak dapat terhubung ke MYSQL. Pastikan MYSQL sudah dihidupkan.")
         End If
     End Function
     Sub SetKoneksi()

@@ -14,4 +14,8 @@
         Fpembelian_produk.Show()
         main_form.Hide()
     End Sub
+
+    Private Sub Fmenu_karyawan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

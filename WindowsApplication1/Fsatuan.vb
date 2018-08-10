@@ -1,22 +1,23 @@
-﻿Public Class Fsatuan
-    Dim satuan As New SqlHelper.DataQuery
+﻿Imports SqlHelper
+Public Class Fsatuan
+    Dim satuan As New DataQuery
     Dim current_id As Integer
     Private Function FormValidation()
         Return Tnm_satuan.TextLength <> 0
     End Function
     Private Sub SetFormData()
-        satuan.formData = New List(Of SqlHelper.SqlManipulation) From {
-            New SqlHelper.SqlManipulation("nm_sat", SqlHelper.Query.SqlString(Tnm_satuan.Text))
+        satuan.formData = New List(Of SqlManipulation) From {
+            New SqlManipulation("nm_sat", Query.SqlString(Tnm_satuan.Text))
             }
     End Sub
-    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub LoadForm(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         satuan.table = "tbl_satuan"
         satuan.view = Nothing
         satuan.primary_key = "id_sat"
         satuan.primary_key_caption = "Id_Sat"
-        satuan.viewData = New List(Of SqlHelper.SqlView) From {
-            New SqlHelper.SqlView("id_sat", "Id_Sat"),
-            New SqlHelper.SqlView("nm_sat", "Nama_Satuan")
+        satuan.viewData = New List(Of SqlView) From {
+            New SqlView("id_sat", "Id_Sat"),
+            New SqlView("nm_sat", "Nama_Satuan")
             }
         DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
         DGsatuan.Columns(satuan.primary_key_caption).Visible = False
@@ -27,11 +28,11 @@
         Tnm_satuan.Text = DGsatuan.Rows(x).Cells(1).Value
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
-        RunQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
-        Call editMessage()
-        Bcancel.PerformClick()
+            RunQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
+            Call editMessage()
+            Bcancel.PerformClick()
             DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
         End If
     End Sub
@@ -43,11 +44,11 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        If FormValidaton() = True Then
+        If FormValidation() = True Then
             SetFormData()
-        RunQuery(satuan.Insert())
-        Call successMessage()
-        DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
+            RunQuery(satuan.Insert())
+            Call successMessage()
+            DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
             Bcancel.PerformClick()
         End If
     End Sub
@@ -67,7 +68,7 @@
             End If
         End If
     End Sub
-    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bcancel.Click
+    Private Sub CancelAction(ByVal sender As System.Object, ByVal e As EventArgs) Handles Bcancel.Click
         Bedit.Enabled = False
         Bsave.Enabled = True
         Tnm_satuan.Clear()
