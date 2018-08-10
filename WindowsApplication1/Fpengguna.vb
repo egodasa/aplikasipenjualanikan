@@ -1,6 +1,9 @@
 ﻿Public Class Fpengguna
     Dim pengguna As New SqlHelper.DataQuery
     Dim current_id As Integer
+    Private Function FormValidation()
+        Return Tusername.TextLength <> 0 And Tpassword.TextLength <> 0 And Cjenis.Text.Length <> 0
+    End Function
     Private Sub SetFormData()
         pengguna.formData = New List(Of SqlHelper.SqlManipulation) From {
             New SqlHelper.SqlManipulation("username", SqlHelper.Query.SqlString(Tusername.Text)),
@@ -34,11 +37,13 @@
         Cjenis.Text = DGpengguna.Rows(x).Cells(4).Value
     End Sub
     Private Sub EditData(ByVal sender As Object, ByVal e As EventArgs) Handles Bedit.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(pengguna.Update(DGpengguna.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGpengguna.DataSource = FetchData(pengguna.SelectMultiple())
+            DGpengguna.DataSource = FetchData(pengguna.SelectMultiple())
+        End If
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
@@ -48,11 +53,13 @@
         End If
     End Sub
     Private Sub SaveData(ByVal sender As Object, ByVal e As EventArgs) Handles Bsave.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(pengguna.Insert())
         Call successMessage()
         DGpengguna.DataSource = FetchData(pengguna.SelectMultiple())
-        Bcancel.PerformClick()
+            Bcancel.PerformClick()
+        End If
     End Sub
     Private Sub CloseForm(ByVal sender As Object, ByVal e As EventArgs) Handles Bexit.Click
         main_form.Show()

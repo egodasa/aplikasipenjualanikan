@@ -3,6 +3,15 @@
     Dim tgl_pembelian As String
     Dim current_id As Integer
     Dim detail_pembelian As New SqlHelper.DataQuery
+    Private Function FormValidation()
+        Dim a As Boolean = Cpemasok.Text.Length <> 0 And Cproduk.Text.Length <> 0 And Tjumlah.Value <> 0 And Tbayar.Value <> 0
+        Dim b As Boolean = Thrg_jual.Value <> 0 And Csatuan.Text.Length <> 0
+        If is_baru.CheckState = True Then
+            Return a And b
+        Else
+            Return a
+        End If
+    End Function
     Private Sub LoadForm(sender As Object, e As EventArgs) Handles MyBase.Load
         If jenis_pengguna <> "Admin" Then
             MenuStrip1.Visible = False
@@ -53,7 +62,8 @@
     End Sub
 
     Private Sub AddProduk(sender As Object, e As EventArgs) Handles Badd.Click
-        If is_baru.Checked = True And Cproduk.SelectedIndex = -1 Then
+        If FormValidaton() = True Then
+            If is_baru.Checked = True And Cproduk.SelectedIndex = -1 Then
             Dim data = New List(Of SqlHelper.SqlManipulation) From {
             New SqlHelper.SqlManipulation("nm_produk", SqlHelper.Query.SqlString(Cproduk.Text)),
             New SqlHelper.SqlManipulation("stok", Tjumlah.Value.ToString()),
@@ -68,7 +78,8 @@
         RunQuery(detail_pembelian.Insert())
         DGproduk.DataSource = FetchData(detail_pembelian.SelectAll("id_pembelian", "=", id_pembelian))
         TotalBayar()
-        ResetForm()
+            ResetForm()
+        End If
     End Sub
     Private Sub ResetForm()
         Cproduk.SelectedIndex = -1

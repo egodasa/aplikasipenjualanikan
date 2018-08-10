@@ -1,6 +1,9 @@
 ﻿Public Class Fsatuan
     Dim satuan As New SqlHelper.DataQuery
     Dim current_id As Integer
+    Private Function FormValidation()
+        Return Tnm_satuan.TextLength <> 0
+    End Function
     Private Sub SetFormData()
         satuan.formData = New List(Of SqlHelper.SqlManipulation) From {
             New SqlHelper.SqlManipulation("nm_sat", SqlHelper.Query.SqlString(Tnm_satuan.Text))
@@ -24,11 +27,13 @@
         Tnm_satuan.Text = DGsatuan.Rows(x).Cells(1).Value
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(satuan.Update(DGsatuan.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
+            DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
+        End If
     End Sub
     Private Sub DeleteData(ByVal x As Integer)
         If MessageBox.Show("Apakah yakin data ini dihapus?", "Peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
@@ -38,11 +43,13 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(satuan.Insert())
         Call successMessage()
         DGsatuan.DataSource = FetchData(satuan.SelectMultiple())
-        Bcancel.PerformClick()
+            Bcancel.PerformClick()
+        End If
     End Sub
     Private Sub CloseForm(sender As Object, e As EventArgs) Handles Bexit.Click
         If Fkelola_produk.Visible = True Then

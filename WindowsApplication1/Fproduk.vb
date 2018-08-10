@@ -1,6 +1,9 @@
 ﻿Public Class Fkelola_produk
     Dim produk As New SqlHelper.DataQuery
     Dim current_id As Integer
+    Private Function FormValidation()
+        Return Thrg_produk.Value <> 0 And Tnm_produk.TextLength <> 0 And Csatuan.Text.Length <> 0 And Tstok.Value <> 0
+    End Function
     Private Sub SetFormData()
         produk.formData = New List(Of SqlHelper.SqlManipulation) From {
             New SqlHelper.SqlManipulation("nm_produk", SqlHelper.Query.SqlString(Tnm_produk.Text)),
@@ -62,11 +65,13 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(produk.Insert())
         Call successMessage()
         DGproduk.DataSource = FetchData(produk.SelectAll())
-        Bcancel.PerformClick()
+            Bcancel.PerformClick()
+        End If
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
         Bedit.Enabled = True
@@ -84,11 +89,13 @@
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        SetFormData()
+        If FormValidaton() = True Then
+            SetFormData()
         RunQuery(produk.Update(DGproduk.Rows(current_id).Cells(0).Value.ToString()))
         Call editMessage()
         Bcancel.PerformClick()
-        DGproduk.DataSource = FetchData(produk.SelectAll())
+            DGproduk.DataSource = FetchData(produk.SelectAll())
+        End If
     End Sub
 
     Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged

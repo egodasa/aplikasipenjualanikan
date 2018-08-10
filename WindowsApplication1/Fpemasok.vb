@@ -1,6 +1,9 @@
 ﻿Public Class Fpemasok
     Dim pemasok As New SqlHelper.DataQuery
     Dim current_id As Integer
+    Private Function FormValidation()
+        Return Tnm_pemasok.TextLength <> 0
+    End Function
     Private Sub SetFormData()
         pemasok.formData = New List(Of SqlHelper.SqlManipulation) From {
             New SqlHelper.SqlManipulation("nm_pemasok", SqlHelper.Query.SqlString(Tnm_pemasok.Text)),
@@ -40,11 +43,13 @@
         End If
     End Sub
     Private Sub SaveData(sender As Object, e As EventArgs) Handles Bsave.Click
-        SetFormData()
-        RunQuery(pemasok.Insert())
-        Call successMessage()
-        DGpemasok.DataSource = FetchData(pemasok.SelectAll())
-        Bcancel.PerformClick()
+        If FormValidaton() = True Then
+            SetFormData()
+            RunQuery(pemasok.Insert())
+            Call successMessage()
+            DGpemasok.DataSource = FetchData(pemasok.SelectAll())
+            Bcancel.PerformClick()
+        End If
     End Sub
     Private Sub GetDetail(ByVal x As Integer)
         Bedit.Enabled = True
@@ -61,11 +66,13 @@
         End If
     End Sub
     Private Sub EditData(sender As Object, e As EventArgs) Handles Bedit.Click
-        SetFormData()
-        RunQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
-        Call editMessage()
-        Bcancel.PerformClick()
-        DGpemasok.DataSource = FetchData(pemasok.SelectAll())
+        If FormValidaton() = True Then
+            SetFormData()
+            RunQuery(pemasok.Update(DGpemasok.Rows(current_id).Cells(0).Value.ToString()))
+            Call editMessage()
+            Bcancel.PerformClick()
+            DGpemasok.DataSource = FetchData(pemasok.SelectAll())
+        End If
     End Sub
 
     Private Sub FindData(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tcari.TextChanged

@@ -3,6 +3,9 @@
     Dim tgl_transaksi As String
     Dim current_id As Integer
     Dim detail_transaksi As New SqlHelper.DataQuery
+    Private Function FormValidation()
+        Return Cproduk.Text.Length <> 0 And Tjumlah.Value <> 0 And Tharga_jual.Value <> 0 And Charga_jual.Text.Length <> 0
+    End Function
     Private Sub LoadForm(sender As Object, e As EventArgs) Handles MyBase.Load
         If jenis_pengguna <> "Admin" Then
             MenuStrip1.Visible = False
@@ -49,11 +52,13 @@
     End Sub
 
     Private Sub AddProduk(sender As Object, e As EventArgs) Handles Badd.Click
-        SetProductValue()
+        If FormValidaton() = True Then
+            SetProductValue()
         RunQuery(detail_transaksi.Insert())
         DGproduk.DataSource = FetchData(detail_transaksi.SelectAll("id_transaksi", "=", id_transaksi))
         TotalBayar()
-        ResetForm()
+            ResetForm()
+        End If
     End Sub
     Private Sub ResetForm()
         Cproduk.SelectedIndex = -1
