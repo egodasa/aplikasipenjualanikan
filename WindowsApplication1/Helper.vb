@@ -1,4 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports SqlHelper
+
 Module helper
     Public kon As MySqlConnection
     Public da As MySqlDataAdapter

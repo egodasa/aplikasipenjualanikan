@@ -41,7 +41,7 @@ Public Class Fpenjualan_produk
         detail_transaksi.formData = New List(Of SqlManipulation) From {
         New SqlManipulation("id_produk", Cproduk.SelectedValue),
         New SqlManipulation("id_dpembelian", Charga_jual.SelectedValue),
-        New SqlManipulation("id_transaksi", id_transaksi),
+        New SqlManipulation("id_transaksi", SqlHelper.Query.SqlString(id_transaksi)),
         New SqlManipulation("jumlah", Tjumlah.Value),
         New SqlManipulation("harga_jual", Tharga_jual.Value)
         }

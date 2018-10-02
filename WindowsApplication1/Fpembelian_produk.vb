@@ -50,7 +50,7 @@ Public Class Fpembelian_produk
         detail_pembelian.formData = New List(Of SqlManipulation) From {
             New SqlManipulation("id_produk", Cproduk.SelectedValue),
             New SqlManipulation("id_pemasok", Cpemasok.SelectedValue),
-            New SqlManipulation("id_pembelian", id_pembelian),
+            New SqlManipulation("id_pembelian", SqlHelper.Query.SqlString(id_pembelian)),
             New SqlManipulation("jumlah", Tjumlah.Value),
             New SqlManipulation("total_harga", Tbayar.Value),
             New SqlManipulation("harga_satuan", Convert.ToDecimal((Tbayar.Value / Tjumlah.Value)).ToString.Replace(",", "."))
