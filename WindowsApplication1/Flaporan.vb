@@ -15,7 +15,6 @@
         Else
             Flaporan1.CR.SetParameterValue("judul", "Per Tanggal " & penjualan_awal.Value.ToString("dd MMMM yyyy") & " - " & penjualan_akhir.Value.ToString("dd MMMM yyyy"))
         End If
-        Flaporan1.CR.SetParameterValue("judul", "Per Tanggal ")
         Flaporan1.tipe_laporan = "penjualan"
         Flaporan1.ShowDialog()
     End Sub
